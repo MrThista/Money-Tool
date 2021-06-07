@@ -1,4 +1,6 @@
-﻿Public Class Form_Main
+﻿Imports System.IO
+
+Public Class Form_Main
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Try
             Close()
@@ -77,6 +79,42 @@
             Debug.Print(Filter)
             Transaction_ListBindingSource.Filter = Filter
             Transaction_ListDataGridView.DataSource = Transaction_ListBindingSource
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
+    Private Sub SaveAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAllToolStripMenuItem.Click
+        Try
+            Me.Validate()
+            Me.AccountsBindingSource.EndEdit()
+            Me.IncomeBindingSource.EndEdit()
+            Me.TransactionsBindingSource.EndEdit()
+            Me.Transaction_ListBindingSource.EndEdit()
+            Me.AccountsTableAdapter.Update(Me.DatabaseDataSet)
+
+            MsgBox("Data Saved", vbOKOnly)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ExportDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportDatabaseToolStripMenuItem.Click
+        Try
+            'getting error: database file is in use so cannot be copied,
+
+            Dim xfile As String = Application.StartupPath & "\database.mdf"
+            Dim FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog()
+
+            Dim NewFolder As String = FolderBrowserDialog.ShowDialog()
+
+            File.Copy(xfile, NewFolder & "\database.mdf")
+
+
+
+            Debug.Print(xfile)
+            Debug.Print(NewFolder & "\database.mdf")
+
         Catch ex As Exception
             Throw
         End Try

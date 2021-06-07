@@ -62,8 +62,19 @@ Partial Class Form_Main
         Me.Button_MonthView_Filter = New System.Windows.Forms.Button()
         Me.ComboBox_MonthView_Year = New System.Windows.Forms.ComboBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Transaction_ListDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Transaction_ListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DatabaseDataSet = New Money_Tool.DatabaseDataSet()
         Me.ButtonSave = New System.Windows.Forms.Button()
@@ -122,6 +133,10 @@ Partial Class Form_Main
         Me.TabAccounts = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AccountsDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccountsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button_Accounts_Save = New System.Windows.Forms.Button()
@@ -134,21 +149,9 @@ Partial Class Form_Main
         Me.IncomeTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.IncomeTableAdapter()
         Me.TransactionsTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.TransactionsTableAdapter()
         Me.Transaction_ListTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.Transaction_ListTableAdapter()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.SaveAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExportDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         AccountLabel = New System.Windows.Forms.Label()
         BalanceLabel = New System.Windows.Forms.Label()
         Account_TypeLabel = New System.Windows.Forms.Label()
@@ -428,7 +431,7 @@ Partial Class Form_Main
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CloseToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportDatabaseToolStripMenuItem, Me.SaveAllToolStripMenuItem, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 22)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -573,6 +576,60 @@ Partial Class Form_Main
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Details"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 103)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(81, 13)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Month Not Paid"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 74)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(61, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Month Paid"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 20)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(75, 13)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Month Income"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 47)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(64, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Month Total"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(272, 47)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(94, 13)
+        Me.Label9.TabIndex = 1
+        Me.Label9.Text = "Main Account Left"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(272, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(105, 13)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Main Account Funds"
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Transaction_ListDataGridView)
@@ -595,6 +652,45 @@ Partial Class Form_Main
         Me.Transaction_ListDataGridView.Name = "Transaction_ListDataGridView"
         Me.Transaction_ListDataGridView.Size = New System.Drawing.Size(818, 267)
         Me.Transaction_ListDataGridView.TabIndex = 0
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 60
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Width = 68
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
+        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn16.Width = 62
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Width = 81
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "MonthID"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "MonthID"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.Width = 73
         '
         'Transaction_ListBindingSource
         '
@@ -1123,6 +1219,34 @@ Partial Class Form_Main
         Me.AccountsDataGridView.Size = New System.Drawing.Size(578, 432)
         Me.AccountsDataGridView.TabIndex = 6
         '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Account"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Account"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 72
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Balance"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Balance"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 71
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Account Type"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Account Type"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 91
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Total Credit Limit"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Total Credit Limit"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 101
+        '
         'AccountsBindingSource
         '
         Me.AccountsBindingSource.DataMember = "Accounts"
@@ -1197,8 +1321,8 @@ Partial Class Form_Main
         Me.TableAdapterManager.AccountsTableAdapter = Me.AccountsTableAdapter
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.IncomeTableAdapter = Me.IncomeTableAdapter
-        Me.TableAdapterManager.Transaction_ListTableAdapter = Nothing
-        Me.TableAdapterManager.TransactionsTableAdapter = Nothing
+        Me.TableAdapterManager.Transaction_ListTableAdapter = Me.Transaction_ListTableAdapter
+        Me.TableAdapterManager.TransactionsTableAdapter = Me.TransactionsTableAdapter
         Me.TableAdapterManager.UpdateOrder = Money_Tool.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.UpdateInsertDelete
         '
         'IncomeTableAdapter
@@ -1213,126 +1337,22 @@ Partial Class Form_Main
         '
         Me.Transaction_ListTableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn14
+        'SaveAllToolStripMenuItem
         '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 60
+        Me.SaveAllToolStripMenuItem.Name = "SaveAllToolStripMenuItem"
+        Me.SaveAllToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveAllToolStripMenuItem.Text = "Save All"
         '
-        'DataGridViewTextBoxColumn15
+        'ToolStripSeparator1
         '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Width = 68
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
-        'DataGridViewTextBoxColumn16
+        'ExportDatabaseToolStripMenuItem
         '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
-        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
-        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn16.Width = 62
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Width = 81
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "MonthID"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "MonthID"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.Width = 73
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Account"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Account"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 72
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Balance"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Balance"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 71
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Account Type"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Account Type"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 99
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Total Credit Limit"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Total Credit Limit"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 101
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(272, 20)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(105, 13)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Main Account Funds"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 47)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Month Total"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 74)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(61, 13)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Month Paid"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 103)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(81, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Month Not Paid"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 20)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(75, 13)
-        Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Month Income"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(272, 47)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(94, 13)
-        Me.Label9.TabIndex = 1
-        Me.Label9.Text = "Main Account Left"
+        Me.ExportDatabaseToolStripMenuItem.Name = "ExportDatabaseToolStripMenuItem"
+        Me.ExportDatabaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExportDatabaseToolStripMenuItem.Text = "Export Database..."
         '
         'Form_Main
         '
@@ -1483,4 +1503,7 @@ Partial Class Form_Main
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents SaveAllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ExportDatabaseToolStripMenuItem As ToolStripMenuItem
 End Class
