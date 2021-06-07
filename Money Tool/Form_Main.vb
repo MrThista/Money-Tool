@@ -8,20 +8,22 @@
     End Sub
 
     Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'DatabaseDataSet1.Income' table. You can move, or remove it, as needed.
-        Me.IncomeTableAdapter.Fill(Me.DatabaseDataSet.Income)
-        'TODO: This line of code loads data into the 'DatabaseDataSet.Accounts' table. You can move, or remove it, as needed.
-        Me.AccountsTableAdapter.Fill(Me.DatabaseDataSet.Accounts)
-
         Try
+            'fill datatables from dataset
+            Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
+            Me.TransactionsTableAdapter.Fill(Me.DatabaseDataSet.Transactions)
+            Me.IncomeTableAdapter.Fill(Me.DatabaseDataSet.Income)
+            Me.AccountsTableAdapter.Fill(Me.DatabaseDataSet.Accounts)
+
+            'fill comboboxes with default current info
+            ComboBox_MonthView_Month.SelectedIndex = Month(Now)
+            ComboBox_MonthView_Year.Text = Year(Now)
+
+
 
         Catch ex As Exception
 
         End Try
-    End Sub
-
-    Private Sub DataGridView_MonthView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
     End Sub
 
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
@@ -56,6 +58,27 @@
             Me.IncomeTableAdapter.Update(Me.DatabaseDataSet)
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Button_MonthView_Filter_Click(sender As Object, e As EventArgs) Handles Button_MonthView_Filter.Click
+        Try
+            Dim Month As String = ComboBox_MonthView_Month.Text
+            Dim Year As String = ComboBox_MonthView_Year.Text
+            Dim mCode As String = Month & Year
+
+
+
+            Dim Filter As String
+
+            If ComboBox_MonthView_PaidStatus.Text = "All" Then Filter = "MonthID = '" & mCode & "'"
+            If ComboBox_MonthView_PaidStatus.Text = "Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Paid'"
+            If ComboBox_MonthView_PaidStatus.Text = "Not Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Not Paid'"
+            Debug.Print(Filter)
+            Transaction_ListBindingSource.Filter = Filter
+            Transaction_ListDataGridView.DataSource = Transaction_ListBindingSource
+        Catch ex As Exception
+            Throw
         End Try
     End Sub
 End Class
