@@ -96,10 +96,10 @@
     <Compile Include="DatabaseDataSet.vb">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form_Main.vb">
+    <Compile Include="Forms\Form_Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Main.Designer.vb">
+    <Compile Include="Forms\Form_Main.Designer.vb">
       <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -120,7 +120,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form_Main.resx">
+    <EmbeddedResource Include="Forms\Form_Main.resx">
       <DependentUpon>Form_Main.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
