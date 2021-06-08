@@ -87,6 +87,7 @@ Partial Class Form_Main
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Transaction_ListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DatabaseDataSet = New Money_Tool.DatabaseDataSet()
+        Me.Button_MonthView_AddTransaction = New System.Windows.Forms.Button()
         Me.ButtonSave = New System.Windows.Forms.Button()
         Me.TabTransactions = New System.Windows.Forms.TabPage()
         Me.GroupBox_Transactions_Details = New System.Windows.Forms.GroupBox()
@@ -504,6 +505,7 @@ Partial Class Form_Main
         Me.TabMonthView.Controls.Add(Me.GroupBox6)
         Me.TabMonthView.Controls.Add(Me.GroupBox5)
         Me.TabMonthView.Controls.Add(Me.GroupBox4)
+        Me.TabMonthView.Controls.Add(Me.Button_MonthView_AddTransaction)
         Me.TabMonthView.Controls.Add(Me.ButtonSave)
         Me.TabMonthView.Location = New System.Drawing.Point(4, 22)
         Me.TabMonthView.Name = "TabMonthView"
@@ -735,6 +737,7 @@ Partial Class Form_Main
         '
         'Transaction_ListDataGridView
         '
+        Me.Transaction_ListDataGridView.AllowUserToAddRows = False
         Me.Transaction_ListDataGridView.AutoGenerateColumns = False
         Me.Transaction_ListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.Transaction_ListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -794,6 +797,15 @@ Partial Class Form_Main
         '
         Me.DatabaseDataSet.DataSetName = "DatabaseDataSet"
         Me.DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Button_MonthView_AddTransaction
+        '
+        Me.Button_MonthView_AddTransaction.Location = New System.Drawing.Point(674, 434)
+        Me.Button_MonthView_AddTransaction.Name = "Button_MonthView_AddTransaction"
+        Me.Button_MonthView_AddTransaction.Size = New System.Drawing.Size(75, 23)
+        Me.Button_MonthView_AddTransaction.TabIndex = 5
+        Me.Button_MonthView_AddTransaction.Text = "Add"
+        Me.Button_MonthView_AddTransaction.UseVisualStyleBackColor = True
         '
         'ButtonSave
         '
@@ -1010,7 +1022,7 @@ Partial Class Form_Main
         Me.GroupBox2.Controls.Add(Me.IncomeDataGridView)
         Me.GroupBox2.Location = New System.Drawing.Point(246, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(550, 470)
+        Me.GroupBox2.Size = New System.Drawing.Size(516, 486)
         Me.GroupBox2.TabIndex = 36
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Data"
@@ -1024,7 +1036,7 @@ Partial Class Form_Main
         Me.IncomeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.IncomeDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.IncomeDataGridView.Name = "IncomeDataGridView"
-        Me.IncomeDataGridView.Size = New System.Drawing.Size(544, 451)
+        Me.IncomeDataGridView.Size = New System.Drawing.Size(510, 467)
         Me.IncomeDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -1604,4 +1616,5 @@ Partial Class Form_Main
     Friend WithEvents TextBox_MonthView_MonthPaid As TextBox
     Friend WithEvents Button_MonthView_Refresh As Button
     Friend WithEvents TextBox_MonthView_MonthNotPaid As TextBox
+    Friend WithEvents Button_MonthView_AddTransaction As Button
 End Class

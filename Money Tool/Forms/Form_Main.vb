@@ -76,7 +76,7 @@ Public Class Form_Main
             Dim Year As String = ComboBox_MonthView_Year.Text
             Dim mCode As String = Month & Year
 
-
+            Transaction_ListDataGridView.DataSource = Nothing
 
             Dim Filter As String = ""
 
@@ -160,5 +160,14 @@ Public Class Form_Main
             TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
 
 
+    End Sub
+
+    Private Sub Button_MonthView_AddTransaction_Click(sender As Object, e As EventArgs) Handles Button_MonthView_AddTransaction.Click
+        Try
+            Form_Add.Show()
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
