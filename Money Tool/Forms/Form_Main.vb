@@ -128,7 +128,7 @@ Public Class Form_Main
         Try
 
             'month income
-            TextBox_MonthView_MonthIncome.Text = ""
+            TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(ComboBox_MonthView_Month.Text & ComboBox_MonthView_Year.Text)
 
             'month total
             TextBox_MonthView_MonthTotal.Text = ""
