@@ -18,10 +18,11 @@ Public Class Form_Main
             Me.AccountsTableAdapter.Fill(Me.DatabaseDataSet.Accounts)
 
             'fill comboboxes with default current info
-            ComboBox_MonthView_Month.SelectedIndex = Month(Now)
+            ComboBox_MonthView_Month.SelectedIndex = Month(Now) - 1
             ComboBox_MonthView_Year.Text = Year(Now)
 
-
+            'Auto Filter
+            Button_MonthView_Refresh.PerformClick()
 
         Catch ex As Exception
 
@@ -76,9 +77,12 @@ Public Class Form_Main
             If ComboBox_MonthView_PaidStatus.Text = "All" Then Filter = "MonthID = '" & mCode & "'"
             If ComboBox_MonthView_PaidStatus.Text = "Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Paid'"
             If ComboBox_MonthView_PaidStatus.Text = "Not Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Not Paid'"
-            Debug.Print(Filter)
             Transaction_ListBindingSource.Filter = Filter
             Transaction_ListDataGridView.DataSource = Transaction_ListBindingSource
+
+            'refresh button click
+            Button_MonthView_Refresh.PerformClick()
+
         Catch ex As Exception
             Throw
         End Try
@@ -117,6 +121,31 @@ Public Class Form_Main
 
         Catch ex As Exception
             Throw
+        End Try
+    End Sub
+
+    Private Sub Button_MonthView_Refresh_Click(sender As Object, e As EventArgs) Handles Button_MonthView_Refresh.Click
+        Try
+
+            'month income
+            TextBox_MonthView_MonthIncome.Text = ""
+
+            'month total
+            TextBox_MonthView_MonthTotal.Text = ""
+            'month paid
+            TextBox_MonthView_MonthPaid.Text = ""
+
+            'month not paid
+            TextBox_MonthView_MonthNotPaid.Text = ""
+
+            'main account funds
+            TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
+
+            'main account left
+            TextBox_MonthView_MainAccountLeft.Text = ""
+
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class
