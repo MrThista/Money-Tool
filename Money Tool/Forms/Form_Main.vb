@@ -22,7 +22,7 @@ Public Class Form_Main
             ComboBox_MonthView_Year.Text = Year(Now)
 
             'Auto Filter
-            Button_MonthView_Refresh.PerformClick()
+            Button_MonthView_Filter.PerformClick()
 
         Catch ex As Exception
 
@@ -32,6 +32,12 @@ Public Class Form_Main
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         Try
             Me.Validate()
+            Me.Transaction_ListBindingSource.EndEdit()
+            Me.Transaction_ListTableAdapter.Update(Me.DatabaseDataSet)
+
+            'refresh
+            Call Button_MonthView_Refresh.PerformClick()
+
         Catch ex As Exception
 
         End Try
@@ -72,7 +78,7 @@ Public Class Form_Main
 
 
 
-            Dim Filter As String
+            Dim Filter As String = ""
 
             If ComboBox_MonthView_PaidStatus.Text = "All" Then Filter = "MonthID = '" & mCode & "'"
             If ComboBox_MonthView_PaidStatus.Text = "Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Paid'"
@@ -84,18 +90,23 @@ Public Class Form_Main
             Button_MonthView_Refresh.PerformClick()
 
         Catch ex As Exception
-            Throw
+            MsgBox("Error: " & ex.Message)
         End Try
     End Sub
 
     Private Sub SaveAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAllToolStripMenuItem.Click
         Try
             Me.Validate()
+
             Me.AccountsBindingSource.EndEdit()
             Me.IncomeBindingSource.EndEdit()
             Me.TransactionsBindingSource.EndEdit()
             Me.Transaction_ListBindingSource.EndEdit()
+
             Me.AccountsTableAdapter.Update(Me.DatabaseDataSet)
+            Me.IncomeTableAdapter.Update(Me.DatabaseDataSet)
+            Me.TransactionsTableAdapter.Update(Me.DatabaseDataSet)
+            Me.Transaction_ListTableAdapter.Update(Me.DatabaseDataSet)
 
             MsgBox("Data Saved", vbOKOnly)
         Catch ex As Exception
@@ -125,27 +136,29 @@ Public Class Form_Main
     End Sub
 
     Private Sub Button_MonthView_Refresh_Click(sender As Object, e As EventArgs) Handles Button_MonthView_Refresh.Click
-        Try
 
-            'month income
-            TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(ComboBox_MonthView_Month.Text & ComboBox_MonthView_Year.Text)
+        Dim MonthID As String = ComboBox_MonthView_Month.Text & ComboBox_MonthView_Year.Text
+
+        On Error Resume Next
+
+        'month income
+        TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID)
 
             'month total
-            TextBox_MonthView_MonthTotal.Text = ""
-            'month paid
-            TextBox_MonthView_MonthPaid.Text = ""
+            TextBox_MonthView_MonthTotal.Text = Transaction_ListTableAdapter.Get_MonthTotal(MonthID)
 
-            'month not paid
-            TextBox_MonthView_MonthNotPaid.Text = ""
+        'month paid
+        TextBox_MonthView_MonthPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid")
+
+        'month not paid
+        TextBox_MonthView_MonthNotPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid")
 
             'main account funds
             TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
 
             'main account left
-            TextBox_MonthView_MainAccountLeft.Text = ""
+            TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
 
-        Catch ex As Exception
 
-        End Try
     End Sub
 End Class
