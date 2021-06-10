@@ -144,21 +144,27 @@ Public Class Form_Main
         On Error Resume Next
 
         'month income
+        TextBox_MonthView_MonthIncome.Text = "0"
         TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID)
 
         'month total
+        TextBox_MonthView_MonthTotal.Text = "0"
         TextBox_MonthView_MonthTotal.Text = Transaction_ListTableAdapter.Get_MonthTotal(MonthID)
 
         'month paid
+        TextBox_MonthView_MonthPaid.Text = "0"
         TextBox_MonthView_MonthPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid")
 
         'month not paid
+        TextBox_MonthView_MonthNotPaid.Text = "0"
         TextBox_MonthView_MonthNotPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid")
 
         'main account funds
+        TextBox_MonthView_MainAccountFunds.Text = "0"
         TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
 
         'main account left
+        TextBox_MonthView_MainAccountLeft.Text = "0"
         TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
 
     End Sub
@@ -169,6 +175,61 @@ Public Class Form_Main
 
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Private Sub Button_Transactions_BulkAdd_Click(sender As Object, e As EventArgs) Handles Button_Transactions_BulkAdd.Click
+        Try
+
+            'ask if the month is correct
+            Dim ans As String = MsgBox("Would you like to add the highlighted transactions to " & ComboBox_MonthView_Month.Text & " " & ComboBox_MonthView_Year.Text, vbOKCancel, "Are you sure?")
+            Dim Name As String = ""
+            Dim Amount As String = ""
+            Dim Comments As String = ""
+            Dim Month As String = ComboBox_MonthView_Month.Text
+            Dim Year As String = ComboBox_MonthView_Year.Text
+            Dim MonthID As String = Month & Year
+
+            If ans = vbOK Then
+                'add each selected row to this months transaction list
+                For Each row As DataGridViewRow In TransactionsDataGridView.Rows
+                    Name = row.Cells(0).Value
+                    Amount = row.Cells(4).Value
+                    Comments = row.Cells(2).Value
+
+                    If row.Selected = True Then
+                        Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
+                    End If
+                Next
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button_Transactions_Save_Click(sender As Object, e As EventArgs) Handles Button_Transactions_Save.Click
+        Try
+            'save changes
+            Me.Validate()
+            Me.TransactionsBindingSource.EndEdit()
+            Me.TransactionsTableAdapter.Update(Me.DatabaseDataSet)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button_Transactions_HighlightRecurring_Click(sender As Object, e As EventArgs) Handles Button_Transactions_HighlightRecurring.Click
+        Try
+            'go through dgv and select all that have recurring status and active
+
+            For Each row As DataGridViewRow In TransactionsDataGridView.Rows
+                Debug.Print(row.Cells(6).FormattedValue.ToString)
+                If row.Cells(5).Value = "Recurring" And row.Cells(6).FormattedValue.ToString = "True" Then row.Selected = True
+            Next
+        Catch ex As Exception
+            ' Throw
         End Try
     End Sub
 End Class

@@ -80,6 +80,10 @@ Partial Class Form_Main
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Transaction_ListDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Transaction_ListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DatabaseDataSet = New Money_Tool.DatabaseDataSet()
         Me.Button_MonthView_AddTransaction = New System.Windows.Forms.Button()
@@ -88,7 +92,9 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details = New System.Windows.Forms.GroupBox()
         Me.StatusTextBox = New System.Windows.Forms.TextBox()
         Me.TransactionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button_Transactions_HighlightRecurring = New System.Windows.Forms.Button()
+        Me.Button_Transactions_BulkAdd = New System.Windows.Forms.Button()
+        Me.Button_Transactions_Save = New System.Windows.Forms.Button()
         Me.TypeTextBox = New System.Windows.Forms.TextBox()
         Me.NameTextBox = New System.Windows.Forms.TextBox()
         Me.AmountTextBox = New System.Windows.Forms.TextBox()
@@ -100,10 +106,10 @@ Partial Class Form_Main
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TabIncome = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.IncomeDataGridView = New System.Windows.Forms.DataGridView()
@@ -159,10 +165,15 @@ Partial Class Form_Main
         Me.IncomeTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.IncomeTableAdapter()
         Me.Transaction_ListTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.Transaction_ListTableAdapter()
         Me.TransactionsTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.TransactionsTableAdapter()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView_Transactions_Stats = New System.Windows.Forms.DataGridView()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DayOfPaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CategoryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         AccountLabel = New System.Windows.Forms.Label()
         BalanceLabel = New System.Windows.Forms.Label()
         Account_TypeLabel = New System.Windows.Forms.Label()
@@ -212,6 +223,8 @@ Partial Class Form_Main
         CType(Me.AccountsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AccountsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'AccountLabel
@@ -446,7 +459,7 @@ Partial Class Form_Main
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(3, 1, 0, 1)
-        Me.MenuStrip1.Size = New System.Drawing.Size(846, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(883, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -477,10 +490,10 @@ Partial Class Form_Main
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 513)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 544)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 8, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(846, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(883, 22)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -495,7 +508,7 @@ Partial Class Form_Main
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(846, 489)
+        Me.TabControl1.Size = New System.Drawing.Size(883, 520)
         Me.TabControl1.TabIndex = 2
         '
         'TabMonthView
@@ -509,7 +522,7 @@ Partial Class Form_Main
         Me.TabMonthView.Location = New System.Drawing.Point(4, 22)
         Me.TabMonthView.Name = "TabMonthView"
         Me.TabMonthView.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabMonthView.Size = New System.Drawing.Size(838, 463)
+        Me.TabMonthView.Size = New System.Drawing.Size(875, 494)
         Me.TabMonthView.TabIndex = 0
         Me.TabMonthView.Text = "Month View"
         Me.TabMonthView.UseVisualStyleBackColor = True
@@ -596,6 +609,8 @@ Partial Class Form_Main
         '
         'GroupBox5
         '
+        Me.GroupBox5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox5.Controls.Add(Me.TextBox_MonthView_MainAccountLeft)
         Me.GroupBox5.Controls.Add(Me.TextBox_MonthView_MainAccountFunds)
         Me.GroupBox5.Controls.Add(Me.TextBox_MonthView_MonthIncome)
@@ -611,7 +626,7 @@ Partial Class Form_Main
         Me.GroupBox5.Controls.Add(Me.Label4)
         Me.GroupBox5.Location = New System.Drawing.Point(215, 6)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(615, 130)
+        Me.GroupBox5.Size = New System.Drawing.Size(649, 130)
         Me.GroupBox5.TabIndex = 6
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Details"
@@ -729,7 +744,7 @@ Partial Class Form_Main
         Me.GroupBox4.Controls.Add(Me.Transaction_ListDataGridView)
         Me.GroupBox4.Location = New System.Drawing.Point(6, 142)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(824, 286)
+        Me.GroupBox4.Size = New System.Drawing.Size(861, 317)
         Me.GroupBox4.TabIndex = 6
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Data"
@@ -745,8 +760,40 @@ Partial Class Form_Main
         Me.Transaction_ListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Transaction_ListDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.Transaction_ListDataGridView.Name = "Transaction_ListDataGridView"
-        Me.Transaction_ListDataGridView.Size = New System.Drawing.Size(818, 267)
+        Me.Transaction_ListDataGridView.Size = New System.Drawing.Size(855, 298)
         Me.Transaction_ListDataGridView.TabIndex = 0
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 60
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Width = 68
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
+        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn16.Width = 62
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Width = 81
         '
         'Transaction_ListBindingSource
         '
@@ -760,7 +807,8 @@ Partial Class Form_Main
         '
         'Button_MonthView_AddTransaction
         '
-        Me.Button_MonthView_AddTransaction.Location = New System.Drawing.Point(674, 434)
+        Me.Button_MonthView_AddTransaction.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_MonthView_AddTransaction.Location = New System.Drawing.Point(711, 465)
         Me.Button_MonthView_AddTransaction.Name = "Button_MonthView_AddTransaction"
         Me.Button_MonthView_AddTransaction.Size = New System.Drawing.Size(75, 23)
         Me.Button_MonthView_AddTransaction.TabIndex = 5
@@ -769,7 +817,8 @@ Partial Class Form_Main
         '
         'ButtonSave
         '
-        Me.ButtonSave.Location = New System.Drawing.Point(755, 434)
+        Me.ButtonSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonSave.Location = New System.Drawing.Point(792, 465)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(75, 23)
         Me.ButtonSave.TabIndex = 5
@@ -784,7 +833,7 @@ Partial Class Form_Main
         Me.TabTransactions.Location = New System.Drawing.Point(4, 22)
         Me.TabTransactions.Name = "TabTransactions"
         Me.TabTransactions.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabTransactions.Size = New System.Drawing.Size(838, 463)
+        Me.TabTransactions.Size = New System.Drawing.Size(875, 494)
         Me.TabTransactions.TabIndex = 1
         Me.TabTransactions.Text = "Transactions"
         Me.TabTransactions.UseVisualStyleBackColor = True
@@ -793,8 +842,11 @@ Partial Class Form_Main
         '
         Me.GroupBox_Transactions_Details.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_Transactions_Details.Controls.Add(Me.GroupBox7)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.StatusTextBox)
-        Me.GroupBox_Transactions_Details.Controls.Add(Me.Button1)
+        Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_HighlightRecurring)
+        Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_BulkAdd)
+        Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_Save)
         Me.GroupBox_Transactions_Details.Controls.Add(StatusLabel)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.TypeTextBox)
         Me.GroupBox_Transactions_Details.Controls.Add(NameLabel)
@@ -810,7 +862,7 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details.Controls.Add(Me.DescriptionTextBox)
         Me.GroupBox_Transactions_Details.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox_Transactions_Details.Name = "GroupBox_Transactions_Details"
-        Me.GroupBox_Transactions_Details.Size = New System.Drawing.Size(234, 451)
+        Me.GroupBox_Transactions_Details.Size = New System.Drawing.Size(234, 482)
         Me.GroupBox_Transactions_Details.TabIndex = 24
         Me.GroupBox_Transactions_Details.TabStop = False
         Me.GroupBox_Transactions_Details.Text = "Details"
@@ -828,15 +880,35 @@ Partial Class Form_Main
         Me.TransactionsBindingSource.DataMember = "Transactions"
         Me.TransactionsBindingSource.DataSource = Me.DatabaseDataSet
         '
-        'Button1
+        'Button_Transactions_HighlightRecurring
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(153, 422)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Save"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button_Transactions_HighlightRecurring.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Transactions_HighlightRecurring.Location = New System.Drawing.Point(72, 397)
+        Me.Button_Transactions_HighlightRecurring.Name = "Button_Transactions_HighlightRecurring"
+        Me.Button_Transactions_HighlightRecurring.Size = New System.Drawing.Size(75, 50)
+        Me.Button_Transactions_HighlightRecurring.TabIndex = 7
+        Me.Button_Transactions_HighlightRecurring.Text = "Highlight Recurring"
+        Me.Button_Transactions_HighlightRecurring.UseVisualStyleBackColor = True
+        '
+        'Button_Transactions_BulkAdd
+        '
+        Me.Button_Transactions_BulkAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Transactions_BulkAdd.Location = New System.Drawing.Point(72, 453)
+        Me.Button_Transactions_BulkAdd.Name = "Button_Transactions_BulkAdd"
+        Me.Button_Transactions_BulkAdd.Size = New System.Drawing.Size(75, 23)
+        Me.Button_Transactions_BulkAdd.TabIndex = 7
+        Me.Button_Transactions_BulkAdd.Text = "Bulk Add"
+        Me.Button_Transactions_BulkAdd.UseVisualStyleBackColor = True
+        '
+        'Button_Transactions_Save
+        '
+        Me.Button_Transactions_Save.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Transactions_Save.Location = New System.Drawing.Point(153, 453)
+        Me.Button_Transactions_Save.Name = "Button_Transactions_Save"
+        Me.Button_Transactions_Save.Size = New System.Drawing.Size(75, 23)
+        Me.Button_Transactions_Save.TabIndex = 7
+        Me.Button_Transactions_Save.Text = "Save"
+        Me.Button_Transactions_Save.UseVisualStyleBackColor = True
         '
         'TypeTextBox
         '
@@ -894,7 +966,7 @@ Partial Class Form_Main
         Me.GroupBox_Transactions.Controls.Add(Me.TransactionsDataGridView)
         Me.GroupBox_Transactions.Location = New System.Drawing.Point(246, 6)
         Me.GroupBox_Transactions.Name = "GroupBox_Transactions"
-        Me.GroupBox_Transactions.Size = New System.Drawing.Size(589, 451)
+        Me.GroupBox_Transactions.Size = New System.Drawing.Size(626, 482)
         Me.GroupBox_Transactions.TabIndex = 23
         Me.GroupBox_Transactions.TabStop = False
         Me.GroupBox_Transactions.Text = "Data"
@@ -909,7 +981,7 @@ Partial Class Form_Main
         Me.TransactionsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TransactionsDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.TransactionsDataGridView.Name = "TransactionsDataGridView"
-        Me.TransactionsDataGridView.Size = New System.Drawing.Size(583, 432)
+        Me.TransactionsDataGridView.Size = New System.Drawing.Size(620, 463)
         Me.TransactionsDataGridView.TabIndex = 22
         '
         'DataGridViewTextBoxColumn7
@@ -936,8 +1008,12 @@ Partial Class Form_Main
         'DataGridViewTextBoxColumn10
         '
         Me.DataGridViewTextBoxColumn10.DataPropertyName = "Category"
+        Me.DataGridViewTextBoxColumn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DataGridViewTextBoxColumn10.HeaderText = "Category"
+        Me.DataGridViewTextBoxColumn10.Items.AddRange(New Object() {"Car", "Debt Repayments", "Digital Subs", "Expenses", "Gifts", "Housing", "Luxury Expenses", "Non Digital Subs"})
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewTextBoxColumn10.Width = 74
         '
         'DataGridViewTextBoxColumn11
@@ -950,15 +1026,21 @@ Partial Class Form_Main
         'DataGridViewTextBoxColumn12
         '
         Me.DataGridViewTextBoxColumn12.DataPropertyName = "Type"
+        Me.DataGridViewTextBoxColumn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DataGridViewTextBoxColumn12.HeaderText = "Type"
+        Me.DataGridViewTextBoxColumn12.Items.AddRange(New Object() {"Annual", "Singular", "Recurring"})
         Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewTextBoxColumn12.Width = 56
         '
         'DataGridViewTextBoxColumn13
         '
         Me.DataGridViewTextBoxColumn13.DataPropertyName = "Status"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Active"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewTextBoxColumn13.Width = 62
         '
         'TabIncome
@@ -969,7 +1051,7 @@ Partial Class Form_Main
         Me.TabIncome.Location = New System.Drawing.Point(4, 22)
         Me.TabIncome.Name = "TabIncome"
         Me.TabIncome.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabIncome.Size = New System.Drawing.Size(838, 463)
+        Me.TabIncome.Size = New System.Drawing.Size(875, 494)
         Me.TabIncome.TabIndex = 4
         Me.TabIncome.Text = "Income"
         Me.TabIncome.UseVisualStyleBackColor = True
@@ -982,7 +1064,7 @@ Partial Class Form_Main
         Me.GroupBox2.Controls.Add(Me.IncomeDataGridView)
         Me.GroupBox2.Location = New System.Drawing.Point(246, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(499, 494)
+        Me.GroupBox2.Size = New System.Drawing.Size(606, 491)
         Me.GroupBox2.TabIndex = 36
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Data"
@@ -996,7 +1078,7 @@ Partial Class Form_Main
         Me.IncomeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.IncomeDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.IncomeDataGridView.Name = "IncomeDataGridView"
-        Me.IncomeDataGridView.Size = New System.Drawing.Size(493, 475)
+        Me.IncomeDataGridView.Size = New System.Drawing.Size(600, 472)
         Me.IncomeDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -1091,6 +1173,8 @@ Partial Class Form_Main
         '
         'GroupBox_Income_Details
         '
+        Me.GroupBox_Income_Details.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox_Income_Details.Controls.Add(IdLabel)
         Me.GroupBox_Income_Details.Controls.Add(Me.IdTextBox)
         Me.GroupBox_Income_Details.Controls.Add(MonthIDLabel)
@@ -1122,7 +1206,7 @@ Partial Class Form_Main
         Me.GroupBox_Income_Details.Controls.Add(Me.Button2)
         Me.GroupBox_Income_Details.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox_Income_Details.Name = "GroupBox_Income_Details"
-        Me.GroupBox_Income_Details.Size = New System.Drawing.Size(237, 465)
+        Me.GroupBox_Income_Details.Size = New System.Drawing.Size(237, 482)
         Me.GroupBox_Income_Details.TabIndex = 35
         Me.GroupBox_Income_Details.TabStop = False
         Me.GroupBox_Income_Details.Text = "Details"
@@ -1241,7 +1325,8 @@ Partial Class Form_Main
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(156, 431)
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Location = New System.Drawing.Point(156, 453)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 7
@@ -1256,7 +1341,7 @@ Partial Class Form_Main
         Me.TabAccounts.Location = New System.Drawing.Point(4, 22)
         Me.TabAccounts.Name = "TabAccounts"
         Me.TabAccounts.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabAccounts.Size = New System.Drawing.Size(838, 463)
+        Me.TabAccounts.Size = New System.Drawing.Size(875, 494)
         Me.TabAccounts.TabIndex = 5
         Me.TabAccounts.Text = "Accounts"
         Me.TabAccounts.UseVisualStyleBackColor = True
@@ -1269,7 +1354,7 @@ Partial Class Form_Main
         Me.GroupBox3.Controls.Add(Me.AccountsDataGridView)
         Me.GroupBox3.Location = New System.Drawing.Point(246, 6)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(584, 451)
+        Me.GroupBox3.Size = New System.Drawing.Size(621, 482)
         Me.GroupBox3.TabIndex = 17
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Data"
@@ -1283,7 +1368,7 @@ Partial Class Form_Main
         Me.AccountsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AccountsDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.AccountsDataGridView.Name = "AccountsDataGridView"
-        Me.AccountsDataGridView.Size = New System.Drawing.Size(578, 432)
+        Me.AccountsDataGridView.Size = New System.Drawing.Size(615, 463)
         Me.AccountsDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn2
@@ -1330,6 +1415,9 @@ Partial Class Form_Main
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button_Accounts_Save)
         Me.GroupBox1.Controls.Add(Me.Total_Credit_LimitTextBox)
         Me.GroupBox1.Controls.Add(Total_Credit_LimitLabel)
@@ -1341,7 +1429,7 @@ Partial Class Form_Main
         Me.GroupBox1.Controls.Add(Me.BalanceTextBox)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(234, 451)
+        Me.GroupBox1.Size = New System.Drawing.Size(234, 479)
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
@@ -1349,7 +1437,7 @@ Partial Class Form_Main
         'Button_Accounts_Save
         '
         Me.Button_Accounts_Save.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button_Accounts_Save.Location = New System.Drawing.Point(153, 422)
+        Me.Button_Accounts_Save.Location = New System.Drawing.Point(153, 450)
         Me.Button_Accounts_Save.Name = "Button_Accounts_Save"
         Me.Button_Accounts_Save.Size = New System.Drawing.Size(75, 23)
         Me.Button_Accounts_Save.TabIndex = 6
@@ -1413,43 +1501,75 @@ Partial Class Form_Main
         '
         Me.TransactionsTableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn14
+        'DataGridView_Transactions_Stats
         '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 60
+        Me.DataGridView_Transactions_Stats.AutoGenerateColumns = False
+        Me.DataGridView_Transactions_Stats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView_Transactions_Stats.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameDataGridViewTextBoxColumn, Me.DayOfPaymentDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.CategoryDataGridViewTextBoxColumn, Me.AmountDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn})
+        Me.DataGridView_Transactions_Stats.DataSource = Me.TransactionsBindingSource
+        Me.DataGridView_Transactions_Stats.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView_Transactions_Stats.Location = New System.Drawing.Point(3, 16)
+        Me.DataGridView_Transactions_Stats.Name = "DataGridView_Transactions_Stats"
+        Me.DataGridView_Transactions_Stats.Size = New System.Drawing.Size(213, 171)
+        Me.DataGridView_Transactions_Stats.TabIndex = 23
         '
-        'DataGridViewTextBoxColumn15
+        'GroupBox7
         '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Width = 68
+        Me.GroupBox7.Controls.Add(Me.DataGridView_Transactions_Stats)
+        Me.GroupBox7.Location = New System.Drawing.Point(9, 201)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(219, 190)
+        Me.GroupBox7.TabIndex = 24
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Stats"
         '
-        'DataGridViewTextBoxColumn16
+        'NameDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
-        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
-        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn16.Width = 62
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
         '
-        'DataGridViewTextBoxColumn17
+        'DayOfPaymentDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Width = 81
+        Me.DayOfPaymentDataGridViewTextBoxColumn.DataPropertyName = "Day of Payment"
+        Me.DayOfPaymentDataGridViewTextBoxColumn.HeaderText = "Day of Payment"
+        Me.DayOfPaymentDataGridViewTextBoxColumn.Name = "DayOfPaymentDataGridViewTextBoxColumn"
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        '
+        'CategoryDataGridViewTextBoxColumn
+        '
+        Me.CategoryDataGridViewTextBoxColumn.DataPropertyName = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.HeaderText = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.Name = "CategoryDataGridViewTextBoxColumn"
+        '
+        'AmountDataGridViewTextBoxColumn
+        '
+        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
+        '
+        'TypeDataGridViewTextBoxColumn
+        '
+        Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
+        Me.TypeDataGridViewTextBoxColumn.Name = "TypeDataGridViewTextBoxColumn"
+        '
+        'StatusDataGridViewTextBoxColumn
+        '
+        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
+        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
+        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
         '
         'Form_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(846, 535)
+        Me.ClientSize = New System.Drawing.Size(883, 566)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -1487,6 +1607,8 @@ Partial Class Form_Main
         CType(Me.AccountsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1502,7 +1624,7 @@ Partial Class Form_Main
     Friend WithEvents ButtonSave As Button
     Friend WithEvents TabIncome As TabPage
     Friend WithEvents TabAccounts As TabPage
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Button_Transactions_Save As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button_Accounts_Save As Button
     Friend WithEvents DatabaseDataSet As DatabaseDataSet
@@ -1527,13 +1649,6 @@ Partial Class Form_Main
     Friend WithEvents StatusTextBox As TextBox
     Friend WithEvents GroupBox_Transactions_Details As GroupBox
     Friend WithEvents GroupBox_Transactions As GroupBox
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents NetPayDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents GroupBox_Income_Details As GroupBox
@@ -1608,4 +1723,22 @@ Partial Class Form_Main
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents Button_Transactions_BulkAdd As Button
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewCheckBoxColumn
+    Friend WithEvents Button_Transactions_HighlightRecurring As Button
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents DataGridView_Transactions_Stats As DataGridView
+    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DayOfPaymentDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CategoryDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TypeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
