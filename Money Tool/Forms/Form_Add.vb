@@ -18,12 +18,12 @@
             'add data to table
             Transaction_ListTableAdapter.Insert(ComboBox_Name.Text, TextBox_Amount.Text, ComboBox_PaidStatus.Text, TextBox_Comments.Text, Form_Main.ComboBox_MonthView_Month.Text & Form_Main.ComboBox_MonthView_Year.Text)
 
+
+
             'close form
             Close()
 
             'Load and Filter
-            Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
-            Form_Main.Transaction_ListDataGridView.DataSource = Nothing
 
             Form_Main.Button_MonthView_Filter.PerformClick()
 

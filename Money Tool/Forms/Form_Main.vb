@@ -76,14 +76,18 @@ Public Class Form_Main
             Dim Year As String = ComboBox_MonthView_Year.Text
             Dim mCode As String = Month & Year
 
-            Transaction_ListDataGridView.DataSource = Nothing
+
 
             Dim Filter As String = ""
 
             If ComboBox_MonthView_PaidStatus.Text = "All" Then Filter = "MonthID = '" & mCode & "'"
             If ComboBox_MonthView_PaidStatus.Text = "Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Paid'"
             If ComboBox_MonthView_PaidStatus.Text = "Not Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Not Paid'"
+
+
+            Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
             Transaction_ListBindingSource.Filter = Filter
+            Transaction_ListDataGridView.DataSource = Nothing
             Transaction_ListDataGridView.DataSource = Transaction_ListBindingSource
 
             'refresh button click
@@ -125,8 +129,6 @@ Public Class Form_Main
 
             File.Copy(xfile, NewFolder & "\database.mdf")
 
-
-
             Debug.Print(xfile)
             Debug.Print(NewFolder & "\database.mdf")
 
@@ -144,8 +146,8 @@ Public Class Form_Main
         'month income
         TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID)
 
-            'month total
-            TextBox_MonthView_MonthTotal.Text = Transaction_ListTableAdapter.Get_MonthTotal(MonthID)
+        'month total
+        TextBox_MonthView_MonthTotal.Text = Transaction_ListTableAdapter.Get_MonthTotal(MonthID)
 
         'month paid
         TextBox_MonthView_MonthPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid")
@@ -153,12 +155,11 @@ Public Class Form_Main
         'month not paid
         TextBox_MonthView_MonthNotPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid")
 
-            'main account funds
-            TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
+        'main account funds
+        TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
 
-            'main account left
-            TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
-
+        'main account left
+        TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
 
     End Sub
 
