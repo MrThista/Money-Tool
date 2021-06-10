@@ -184,7 +184,7 @@ Public Class Form_Main
             'ask if the month is correct
             Dim ans As String = MsgBox("Would you like to add the highlighted transactions to " & ComboBox_MonthView_Month.Text & " " & ComboBox_MonthView_Year.Text, vbOKCancel, "Are you sure?")
             Dim Name As String = ""
-            Dim Amount As String = ""
+            Dim Amount As Object = 0
             Dim Comments As String = ""
             Dim Month As String = ComboBox_MonthView_Month.Text
             Dim Year As String = ComboBox_MonthView_Year.Text
@@ -195,7 +195,11 @@ Public Class Form_Main
                 For Each row As DataGridViewRow In TransactionsDataGridView.Rows
                     Name = row.Cells(0).Value
                     Amount = row.Cells(4).Value
-                    Comments = row.Cells(2).Value
+                    Comments = row.Cells(2).Value.ToString
+
+                    Debug.Print(Name)
+                    Debug.Print(Amount)
+                    Debug.Print(Comments)
 
                     If row.Selected = True Then
                         Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
@@ -205,7 +209,7 @@ Public Class Form_Main
             End If
 
         Catch ex As Exception
-
+            Throw
         End Try
     End Sub
 
