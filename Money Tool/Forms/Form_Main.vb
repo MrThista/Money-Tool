@@ -11,13 +11,14 @@ Public Class Form_Main
 
     Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'DatabaseDataSet.Transactions_Grouped' table. You can move, or remove it, as needed.
-        Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
+
         Try
 
             'nav to MonthView
             TabControl1.SelectTab("TabMonthView")
 
             'fill datatables from dataset
+            Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
             Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
             Me.TransactionsTableAdapter.Fill(Me.DatabaseDataSet.Transactions)
             Me.IncomeTableAdapter.Fill(Me.DatabaseDataSet.Income)
