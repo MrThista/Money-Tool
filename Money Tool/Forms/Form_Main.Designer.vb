@@ -34,7 +34,6 @@ Partial Class Form_Main
         Dim AmountLabel As System.Windows.Forms.Label
         Dim TypeLabel As System.Windows.Forms.Label
         Dim StatusLabel As System.Windows.Forms.Label
-        Dim IdLabel As System.Windows.Forms.Label
         Dim MonthIDLabel As System.Windows.Forms.Label
         Dim Pay_DateLabel As System.Windows.Forms.Label
         Dim Pay_PeriodLabel As System.Windows.Forms.Label
@@ -48,6 +47,20 @@ Partial Class Form_Main
         Dim CommentsLabel As System.Windows.Forms.Label
         Dim SourceLabel As System.Windows.Forms.Label
         Dim Net_PayLabel As System.Windows.Forms.Label
+        Dim Label10 As System.Windows.Forms.Label
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,10 +93,6 @@ Partial Class Form_Main
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Transaction_ListDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Transaction_ListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DatabaseDataSet = New Money_Tool.DatabaseDataSet()
         Me.Button_MonthView_AddTransaction = New System.Windows.Forms.Button()
@@ -92,8 +101,10 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.DataGridView_Transactions_Stats = New System.Windows.Forms.DataGridView()
-        Me.TransactionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TransactionsGroupedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TextBox_Transactions_StatsTotal = New System.Windows.Forms.TextBox()
         Me.StatusTextBox = New System.Windows.Forms.TextBox()
+        Me.TransactionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button_Transactions_HighlightRecurring = New System.Windows.Forms.Button()
         Me.Button_Transactions_BulkAdd = New System.Windows.Forms.Button()
         Me.Button_Transactions_Save = New System.Windows.Forms.Button()
@@ -105,33 +116,11 @@ Partial Class Form_Main
         Me.DescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox_Transactions = New System.Windows.Forms.GroupBox()
         Me.TransactionsDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TabIncome = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.IncomeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IncomeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox_Income_Details = New System.Windows.Forms.GroupBox()
-        Me.IdTextBox = New System.Windows.Forms.TextBox()
         Me.MonthIDTextBox = New System.Windows.Forms.TextBox()
         Me.Pay_DateTextBox = New System.Windows.Forms.TextBox()
         Me.Pay_PeriodTextBox = New System.Windows.Forms.TextBox()
@@ -149,12 +138,6 @@ Partial Class Form_Main
         Me.TabAccounts = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AccountsDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccountsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button_Accounts_Save = New System.Windows.Forms.Button()
@@ -167,6 +150,38 @@ Partial Class Form_Main
         Me.IncomeTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.IncomeTableAdapter()
         Me.Transaction_ListTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.Transaction_ListTableAdapter()
         Me.TransactionsTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.TransactionsTableAdapter()
+        Me.Transactions_GroupedTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.Transactions_GroupedTableAdapter()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CategoryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         AccountLabel = New System.Windows.Forms.Label()
         BalanceLabel = New System.Windows.Forms.Label()
         Account_TypeLabel = New System.Windows.Forms.Label()
@@ -178,7 +193,6 @@ Partial Class Form_Main
         AmountLabel = New System.Windows.Forms.Label()
         TypeLabel = New System.Windows.Forms.Label()
         StatusLabel = New System.Windows.Forms.Label()
-        IdLabel = New System.Windows.Forms.Label()
         MonthIDLabel = New System.Windows.Forms.Label()
         Pay_DateLabel = New System.Windows.Forms.Label()
         Pay_PeriodLabel = New System.Windows.Forms.Label()
@@ -192,6 +206,7 @@ Partial Class Form_Main
         CommentsLabel = New System.Windows.Forms.Label()
         SourceLabel = New System.Windows.Forms.Label()
         Net_PayLabel = New System.Windows.Forms.Label()
+        Label10 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabMonthView.SuspendLayout()
@@ -205,6 +220,7 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TransactionsGroupedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TransactionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Transactions.SuspendLayout()
         CType(Me.TransactionsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -319,19 +335,10 @@ Partial Class Form_Main
         StatusLabel.TabIndex = 21
         StatusLabel.Text = "Status:"
         '
-        'IdLabel
-        '
-        IdLabel.AutoSize = True
-        IdLabel.Location = New System.Drawing.Point(6, 22)
-        IdLabel.Name = "IdLabel"
-        IdLabel.Size = New System.Drawing.Size(19, 13)
-        IdLabel.TabIndex = 7
-        IdLabel.Text = "Id:"
-        '
         'MonthIDLabel
         '
         MonthIDLabel.AutoSize = True
-        MonthIDLabel.Location = New System.Drawing.Point(6, 48)
+        MonthIDLabel.Location = New System.Drawing.Point(6, 22)
         MonthIDLabel.Name = "MonthIDLabel"
         MonthIDLabel.Size = New System.Drawing.Size(54, 13)
         MonthIDLabel.TabIndex = 9
@@ -340,7 +347,7 @@ Partial Class Form_Main
         'Pay_DateLabel
         '
         Pay_DateLabel.AutoSize = True
-        Pay_DateLabel.Location = New System.Drawing.Point(6, 74)
+        Pay_DateLabel.Location = New System.Drawing.Point(6, 48)
         Pay_DateLabel.Name = "Pay_DateLabel"
         Pay_DateLabel.Size = New System.Drawing.Size(54, 13)
         Pay_DateLabel.TabIndex = 11
@@ -349,7 +356,7 @@ Partial Class Form_Main
         'Pay_PeriodLabel
         '
         Pay_PeriodLabel.AutoSize = True
-        Pay_PeriodLabel.Location = New System.Drawing.Point(6, 100)
+        Pay_PeriodLabel.Location = New System.Drawing.Point(6, 74)
         Pay_PeriodLabel.Name = "Pay_PeriodLabel"
         Pay_PeriodLabel.Size = New System.Drawing.Size(61, 13)
         Pay_PeriodLabel.TabIndex = 13
@@ -358,7 +365,7 @@ Partial Class Form_Main
         'Tax_CodeLabel
         '
         Tax_CodeLabel.AutoSize = True
-        Tax_CodeLabel.Location = New System.Drawing.Point(6, 126)
+        Tax_CodeLabel.Location = New System.Drawing.Point(6, 100)
         Tax_CodeLabel.Name = "Tax_CodeLabel"
         Tax_CodeLabel.Size = New System.Drawing.Size(56, 13)
         Tax_CodeLabel.TabIndex = 15
@@ -367,7 +374,7 @@ Partial Class Form_Main
         'Basic_SalaryLabel
         '
         Basic_SalaryLabel.AutoSize = True
-        Basic_SalaryLabel.Location = New System.Drawing.Point(6, 152)
+        Basic_SalaryLabel.Location = New System.Drawing.Point(6, 126)
         Basic_SalaryLabel.Name = "Basic_SalaryLabel"
         Basic_SalaryLabel.Size = New System.Drawing.Size(68, 13)
         Basic_SalaryLabel.TabIndex = 17
@@ -376,7 +383,7 @@ Partial Class Form_Main
         'Other_PayLabel
         '
         Other_PayLabel.AutoSize = True
-        Other_PayLabel.Location = New System.Drawing.Point(6, 178)
+        Other_PayLabel.Location = New System.Drawing.Point(6, 152)
         Other_PayLabel.Name = "Other_PayLabel"
         Other_PayLabel.Size = New System.Drawing.Size(57, 13)
         Other_PayLabel.TabIndex = 19
@@ -385,7 +392,7 @@ Partial Class Form_Main
         'PensionLabel
         '
         PensionLabel.AutoSize = True
-        PensionLabel.Location = New System.Drawing.Point(6, 204)
+        PensionLabel.Location = New System.Drawing.Point(6, 178)
         PensionLabel.Name = "PensionLabel"
         PensionLabel.Size = New System.Drawing.Size(48, 13)
         PensionLabel.TabIndex = 21
@@ -394,7 +401,7 @@ Partial Class Form_Main
         'TaxLabel
         '
         TaxLabel.AutoSize = True
-        TaxLabel.Location = New System.Drawing.Point(6, 230)
+        TaxLabel.Location = New System.Drawing.Point(6, 204)
         TaxLabel.Name = "TaxLabel"
         TaxLabel.Size = New System.Drawing.Size(28, 13)
         TaxLabel.TabIndex = 23
@@ -403,7 +410,7 @@ Partial Class Form_Main
         'NILabel
         '
         NILabel.AutoSize = True
-        NILabel.Location = New System.Drawing.Point(6, 256)
+        NILabel.Location = New System.Drawing.Point(6, 230)
         NILabel.Name = "NILabel"
         NILabel.Size = New System.Drawing.Size(21, 13)
         NILabel.TabIndex = 25
@@ -412,7 +419,7 @@ Partial Class Form_Main
         'PredictedLabel
         '
         PredictedLabel.AutoSize = True
-        PredictedLabel.Location = New System.Drawing.Point(6, 282)
+        PredictedLabel.Location = New System.Drawing.Point(6, 256)
         PredictedLabel.Name = "PredictedLabel"
         PredictedLabel.Size = New System.Drawing.Size(55, 13)
         PredictedLabel.TabIndex = 27
@@ -421,7 +428,7 @@ Partial Class Form_Main
         'CommentsLabel
         '
         CommentsLabel.AutoSize = True
-        CommentsLabel.Location = New System.Drawing.Point(6, 308)
+        CommentsLabel.Location = New System.Drawing.Point(6, 282)
         CommentsLabel.Name = "CommentsLabel"
         CommentsLabel.Size = New System.Drawing.Size(59, 13)
         CommentsLabel.TabIndex = 29
@@ -430,7 +437,7 @@ Partial Class Form_Main
         'SourceLabel
         '
         SourceLabel.AutoSize = True
-        SourceLabel.Location = New System.Drawing.Point(6, 334)
+        SourceLabel.Location = New System.Drawing.Point(6, 308)
         SourceLabel.Name = "SourceLabel"
         SourceLabel.Size = New System.Drawing.Size(44, 13)
         SourceLabel.TabIndex = 31
@@ -439,11 +446,20 @@ Partial Class Form_Main
         'Net_PayLabel
         '
         Net_PayLabel.AutoSize = True
-        Net_PayLabel.Location = New System.Drawing.Point(6, 360)
+        Net_PayLabel.Location = New System.Drawing.Point(6, 334)
         Net_PayLabel.Name = "Net_PayLabel"
         Net_PayLabel.Size = New System.Drawing.Size(48, 13)
         Net_PayLabel.TabIndex = 33
         Net_PayLabel.Text = "Net Pay:"
+        '
+        'Label10
+        '
+        Label10.AutoSize = True
+        Label10.Location = New System.Drawing.Point(9, 390)
+        Label10.Name = "Label10"
+        Label10.Size = New System.Drawing.Size(31, 13)
+        Label10.TabIndex = 21
+        Label10.Text = "Total"
         '
         'MenuStrip1
         '
@@ -661,7 +677,8 @@ Partial Class Form_Main
         '
         'Button_MonthView_Refresh
         '
-        Me.Button_MonthView_Refresh.Location = New System.Drawing.Point(534, 101)
+        Me.Button_MonthView_Refresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_MonthView_Refresh.Location = New System.Drawing.Point(568, 103)
         Me.Button_MonthView_Refresh.Name = "Button_MonthView_Refresh"
         Me.Button_MonthView_Refresh.Size = New System.Drawing.Size(75, 23)
         Me.Button_MonthView_Refresh.TabIndex = 5
@@ -753,40 +770,9 @@ Partial Class Form_Main
         Me.Transaction_ListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Transaction_ListDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.Transaction_ListDataGridView.Name = "Transaction_ListDataGridView"
+        Me.Transaction_ListDataGridView.RowHeadersWidth = 20
         Me.Transaction_ListDataGridView.Size = New System.Drawing.Size(855, 298)
         Me.Transaction_ListDataGridView.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 60
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Width = 68
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
-        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
-        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn16.Width = 62
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Width = 81
         '
         'Transaction_ListBindingSource
         '
@@ -836,10 +822,12 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.GroupBox7)
+        Me.GroupBox_Transactions_Details.Controls.Add(Me.TextBox_Transactions_StatsTotal)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.StatusTextBox)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_HighlightRecurring)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_BulkAdd)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.Button_Transactions_Save)
+        Me.GroupBox_Transactions_Details.Controls.Add(Label10)
         Me.GroupBox_Transactions_Details.Controls.Add(StatusLabel)
         Me.GroupBox_Transactions_Details.Controls.Add(Me.TypeTextBox)
         Me.GroupBox_Transactions_Details.Controls.Add(NameLabel)
@@ -862,27 +850,68 @@ Partial Class Form_Main
         '
         'GroupBox7
         '
+        Me.GroupBox7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox7.Controls.Add(Me.DataGridView_Transactions_Stats)
         Me.GroupBox7.Location = New System.Drawing.Point(9, 201)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(219, 190)
+        Me.GroupBox7.Size = New System.Drawing.Size(219, 186)
         Me.GroupBox7.TabIndex = 24
         Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Stats"
+        Me.GroupBox7.Text = "Reccuring and Active Stats"
         '
         'DataGridView_Transactions_Stats
         '
+        Me.DataGridView_Transactions_Stats.AllowUserToAddRows = False
+        Me.DataGridView_Transactions_Stats.AllowUserToDeleteRows = False
+        Me.DataGridView_Transactions_Stats.AllowUserToResizeColumns = False
+        Me.DataGridView_Transactions_Stats.AllowUserToResizeRows = False
+        Me.DataGridView_Transactions_Stats.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView_Transactions_Stats.AutoGenerateColumns = False
+        Me.DataGridView_Transactions_Stats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView_Transactions_Stats.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.DataGridView_Transactions_Stats.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridView_Transactions_Stats.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.DataGridView_Transactions_Stats.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DataGridView_Transactions_Stats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView_Transactions_Stats.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView_Transactions_Stats.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CategoryDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn})
+        Me.DataGridView_Transactions_Stats.DataSource = Me.TransactionsGroupedBindingSource
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle28.NullValue = "0"
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView_Transactions_Stats.DefaultCellStyle = DataGridViewCellStyle28
         Me.DataGridView_Transactions_Stats.Location = New System.Drawing.Point(3, 16)
+        Me.DataGridView_Transactions_Stats.MultiSelect = False
         Me.DataGridView_Transactions_Stats.Name = "DataGridView_Transactions_Stats"
-        Me.DataGridView_Transactions_Stats.Size = New System.Drawing.Size(213, 171)
+        Me.DataGridView_Transactions_Stats.ReadOnly = True
+        Me.DataGridView_Transactions_Stats.RowHeadersVisible = False
+        Me.DataGridView_Transactions_Stats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.DataGridView_Transactions_Stats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView_Transactions_Stats.ShowEditingIcon = False
+        Me.DataGridView_Transactions_Stats.Size = New System.Drawing.Size(213, 167)
         Me.DataGridView_Transactions_Stats.TabIndex = 23
         '
-        'TransactionsBindingSource
+        'TransactionsGroupedBindingSource
         '
-        Me.TransactionsBindingSource.DataMember = "Transactions"
-        Me.TransactionsBindingSource.DataSource = Me.DatabaseDataSet
+        Me.TransactionsGroupedBindingSource.DataMember = "Transactions_Grouped"
+        Me.TransactionsGroupedBindingSource.DataSource = Me.DatabaseDataSet
+        '
+        'TextBox_Transactions_StatsTotal
+        '
+        Me.TextBox_Transactions_StatsTotal.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_Transactions_StatsTotal.Location = New System.Drawing.Point(122, 390)
+        Me.TextBox_Transactions_StatsTotal.Name = "TextBox_Transactions_StatsTotal"
+        Me.TextBox_Transactions_StatsTotal.Size = New System.Drawing.Size(106, 13)
+        Me.TextBox_Transactions_StatsTotal.TabIndex = 22
+        Me.TextBox_Transactions_StatsTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'StatusTextBox
         '
@@ -892,24 +921,30 @@ Partial Class Form_Main
         Me.StatusTextBox.Size = New System.Drawing.Size(131, 20)
         Me.StatusTextBox.TabIndex = 22
         '
+        'TransactionsBindingSource
+        '
+        Me.TransactionsBindingSource.DataMember = "Transactions"
+        Me.TransactionsBindingSource.DataSource = Me.DatabaseDataSet
+        '
         'Button_Transactions_HighlightRecurring
         '
         Me.Button_Transactions_HighlightRecurring.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button_Transactions_HighlightRecurring.Location = New System.Drawing.Point(72, 397)
+        Me.Button_Transactions_HighlightRecurring.Location = New System.Drawing.Point(9, 422)
         Me.Button_Transactions_HighlightRecurring.Name = "Button_Transactions_HighlightRecurring"
-        Me.Button_Transactions_HighlightRecurring.Size = New System.Drawing.Size(75, 50)
+        Me.Button_Transactions_HighlightRecurring.Size = New System.Drawing.Size(219, 25)
         Me.Button_Transactions_HighlightRecurring.TabIndex = 7
-        Me.Button_Transactions_HighlightRecurring.Text = "Highlight Recurring"
+        Me.Button_Transactions_HighlightRecurring.Text = "Highlight Recurring and Active"
         Me.Button_Transactions_HighlightRecurring.UseVisualStyleBackColor = True
         '
         'Button_Transactions_BulkAdd
         '
         Me.Button_Transactions_BulkAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button_Transactions_BulkAdd.Location = New System.Drawing.Point(72, 453)
+        Me.Button_Transactions_BulkAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button_Transactions_BulkAdd.Location = New System.Drawing.Point(9, 453)
         Me.Button_Transactions_BulkAdd.Name = "Button_Transactions_BulkAdd"
-        Me.Button_Transactions_BulkAdd.Size = New System.Drawing.Size(75, 23)
+        Me.Button_Transactions_BulkAdd.Size = New System.Drawing.Size(138, 23)
         Me.Button_Transactions_BulkAdd.TabIndex = 7
-        Me.Button_Transactions_BulkAdd.Text = "Bulk Add"
+        Me.Button_Transactions_BulkAdd.Text = "Bulk Add - Filtered Month"
         Me.Button_Transactions_BulkAdd.UseVisualStyleBackColor = True
         '
         'Button_Transactions_Save
@@ -993,67 +1028,10 @@ Partial Class Form_Main
         Me.TransactionsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TransactionsDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.TransactionsDataGridView.Name = "TransactionsDataGridView"
+        Me.TransactionsDataGridView.RowHeadersWidth = 15
+        Me.TransactionsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.TransactionsDataGridView.Size = New System.Drawing.Size(620, 463)
         Me.TransactionsDataGridView.TabIndex = 22
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 60
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Day of Payment"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Day of Payment"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 98
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Description"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.Width = 85
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Category"
-        Me.DataGridViewTextBoxColumn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Category"
-        Me.DataGridViewTextBoxColumn10.Items.AddRange(New Object() {"Car", "Debt Repayments", "Digital Subs", "Expenses", "Gifts", "Housing", "Luxury Expenses", "Non Digital Subs"})
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn10.Width = 74
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Amount"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Width = 68
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Type"
-        Me.DataGridViewTextBoxColumn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Type"
-        Me.DataGridViewTextBoxColumn12.Items.AddRange(New Object() {"Annual", "Singular", "Recurring"})
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn12.Width = 56
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Status"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Active"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn13.Width = 62
         '
         'TabIncome
         '
@@ -1084,99 +1062,16 @@ Partial Class Form_Main
         'IncomeDataGridView
         '
         Me.IncomeDataGridView.AutoGenerateColumns = False
+        Me.IncomeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.IncomeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.IncomeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30})
+        Me.IncomeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30})
         Me.IncomeDataGridView.DataSource = Me.IncomeBindingSource
         Me.IncomeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.IncomeDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.IncomeDataGridView.Name = "IncomeDataGridView"
+        Me.IncomeDataGridView.RowHeadersWidth = 20
         Me.IncomeDataGridView.Size = New System.Drawing.Size(600, 472)
         Me.IncomeDataGridView.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Id"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Id"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "MonthID"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "MonthID"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.DataPropertyName = "Pay Date"
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Pay Date"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Pay Period"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "Pay Period"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "Tax Code"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "Tax Code"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "Basic Salary"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Basic Salary"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        '
-        'DataGridViewTextBoxColumn23
-        '
-        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Other Pay"
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Other Pay"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Pension"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Pension"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "Tax"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "Tax"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        '
-        'DataGridViewTextBoxColumn26
-        '
-        Me.DataGridViewTextBoxColumn26.DataPropertyName = "NI"
-        Me.DataGridViewTextBoxColumn26.HeaderText = "NI"
-        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
-        '
-        'DataGridViewTextBoxColumn27
-        '
-        Me.DataGridViewTextBoxColumn27.DataPropertyName = "Predicted"
-        Me.DataGridViewTextBoxColumn27.HeaderText = "Predicted"
-        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
-        '
-        'DataGridViewTextBoxColumn28
-        '
-        Me.DataGridViewTextBoxColumn28.DataPropertyName = "Comments"
-        Me.DataGridViewTextBoxColumn28.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        Me.DataGridViewTextBoxColumn29.DataPropertyName = "Source"
-        Me.DataGridViewTextBoxColumn29.HeaderText = "Source"
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.DataPropertyName = "Net Pay"
-        Me.DataGridViewTextBoxColumn30.HeaderText = "Net Pay"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
         '
         'IncomeBindingSource
         '
@@ -1187,8 +1082,6 @@ Partial Class Form_Main
         '
         Me.GroupBox_Income_Details.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox_Income_Details.Controls.Add(IdLabel)
-        Me.GroupBox_Income_Details.Controls.Add(Me.IdTextBox)
         Me.GroupBox_Income_Details.Controls.Add(MonthIDLabel)
         Me.GroupBox_Income_Details.Controls.Add(Me.MonthIDTextBox)
         Me.GroupBox_Income_Details.Controls.Add(Pay_DateLabel)
@@ -1223,18 +1116,10 @@ Partial Class Form_Main
         Me.GroupBox_Income_Details.TabStop = False
         Me.GroupBox_Income_Details.Text = "Details"
         '
-        'IdTextBox
-        '
-        Me.IdTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Id", True))
-        Me.IdTextBox.Location = New System.Drawing.Point(80, 19)
-        Me.IdTextBox.Name = "IdTextBox"
-        Me.IdTextBox.Size = New System.Drawing.Size(151, 20)
-        Me.IdTextBox.TabIndex = 8
-        '
         'MonthIDTextBox
         '
         Me.MonthIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "MonthID", True))
-        Me.MonthIDTextBox.Location = New System.Drawing.Point(80, 45)
+        Me.MonthIDTextBox.Location = New System.Drawing.Point(80, 19)
         Me.MonthIDTextBox.Name = "MonthIDTextBox"
         Me.MonthIDTextBox.Size = New System.Drawing.Size(151, 20)
         Me.MonthIDTextBox.TabIndex = 10
@@ -1242,7 +1127,7 @@ Partial Class Form_Main
         'Pay_DateTextBox
         '
         Me.Pay_DateTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Pay Date", True))
-        Me.Pay_DateTextBox.Location = New System.Drawing.Point(80, 71)
+        Me.Pay_DateTextBox.Location = New System.Drawing.Point(80, 45)
         Me.Pay_DateTextBox.Name = "Pay_DateTextBox"
         Me.Pay_DateTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Pay_DateTextBox.TabIndex = 12
@@ -1250,7 +1135,7 @@ Partial Class Form_Main
         'Pay_PeriodTextBox
         '
         Me.Pay_PeriodTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Pay Period", True))
-        Me.Pay_PeriodTextBox.Location = New System.Drawing.Point(80, 97)
+        Me.Pay_PeriodTextBox.Location = New System.Drawing.Point(80, 71)
         Me.Pay_PeriodTextBox.Name = "Pay_PeriodTextBox"
         Me.Pay_PeriodTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Pay_PeriodTextBox.TabIndex = 14
@@ -1258,7 +1143,7 @@ Partial Class Form_Main
         'Tax_CodeTextBox
         '
         Me.Tax_CodeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Tax Code", True))
-        Me.Tax_CodeTextBox.Location = New System.Drawing.Point(80, 123)
+        Me.Tax_CodeTextBox.Location = New System.Drawing.Point(80, 97)
         Me.Tax_CodeTextBox.Name = "Tax_CodeTextBox"
         Me.Tax_CodeTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Tax_CodeTextBox.TabIndex = 16
@@ -1266,7 +1151,7 @@ Partial Class Form_Main
         'Basic_SalaryTextBox
         '
         Me.Basic_SalaryTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Basic Salary", True))
-        Me.Basic_SalaryTextBox.Location = New System.Drawing.Point(80, 149)
+        Me.Basic_SalaryTextBox.Location = New System.Drawing.Point(80, 123)
         Me.Basic_SalaryTextBox.Name = "Basic_SalaryTextBox"
         Me.Basic_SalaryTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Basic_SalaryTextBox.TabIndex = 18
@@ -1274,7 +1159,7 @@ Partial Class Form_Main
         'Other_PayTextBox
         '
         Me.Other_PayTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Other Pay", True))
-        Me.Other_PayTextBox.Location = New System.Drawing.Point(80, 175)
+        Me.Other_PayTextBox.Location = New System.Drawing.Point(80, 149)
         Me.Other_PayTextBox.Name = "Other_PayTextBox"
         Me.Other_PayTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Other_PayTextBox.TabIndex = 20
@@ -1282,7 +1167,7 @@ Partial Class Form_Main
         'PensionTextBox
         '
         Me.PensionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Pension", True))
-        Me.PensionTextBox.Location = New System.Drawing.Point(80, 201)
+        Me.PensionTextBox.Location = New System.Drawing.Point(80, 175)
         Me.PensionTextBox.Name = "PensionTextBox"
         Me.PensionTextBox.Size = New System.Drawing.Size(151, 20)
         Me.PensionTextBox.TabIndex = 22
@@ -1290,7 +1175,7 @@ Partial Class Form_Main
         'TaxTextBox
         '
         Me.TaxTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Tax", True))
-        Me.TaxTextBox.Location = New System.Drawing.Point(80, 227)
+        Me.TaxTextBox.Location = New System.Drawing.Point(80, 201)
         Me.TaxTextBox.Name = "TaxTextBox"
         Me.TaxTextBox.Size = New System.Drawing.Size(151, 20)
         Me.TaxTextBox.TabIndex = 24
@@ -1298,7 +1183,7 @@ Partial Class Form_Main
         'NITextBox
         '
         Me.NITextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "NI", True))
-        Me.NITextBox.Location = New System.Drawing.Point(80, 253)
+        Me.NITextBox.Location = New System.Drawing.Point(80, 227)
         Me.NITextBox.Name = "NITextBox"
         Me.NITextBox.Size = New System.Drawing.Size(151, 20)
         Me.NITextBox.TabIndex = 26
@@ -1306,7 +1191,7 @@ Partial Class Form_Main
         'PredictedTextBox
         '
         Me.PredictedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Predicted", True))
-        Me.PredictedTextBox.Location = New System.Drawing.Point(80, 279)
+        Me.PredictedTextBox.Location = New System.Drawing.Point(80, 253)
         Me.PredictedTextBox.Name = "PredictedTextBox"
         Me.PredictedTextBox.Size = New System.Drawing.Size(151, 20)
         Me.PredictedTextBox.TabIndex = 28
@@ -1314,7 +1199,7 @@ Partial Class Form_Main
         'CommentsTextBox
         '
         Me.CommentsTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Comments", True))
-        Me.CommentsTextBox.Location = New System.Drawing.Point(80, 305)
+        Me.CommentsTextBox.Location = New System.Drawing.Point(80, 279)
         Me.CommentsTextBox.Name = "CommentsTextBox"
         Me.CommentsTextBox.Size = New System.Drawing.Size(151, 20)
         Me.CommentsTextBox.TabIndex = 30
@@ -1322,7 +1207,7 @@ Partial Class Form_Main
         'SourceTextBox
         '
         Me.SourceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Source", True))
-        Me.SourceTextBox.Location = New System.Drawing.Point(80, 331)
+        Me.SourceTextBox.Location = New System.Drawing.Point(80, 305)
         Me.SourceTextBox.Name = "SourceTextBox"
         Me.SourceTextBox.Size = New System.Drawing.Size(151, 20)
         Me.SourceTextBox.TabIndex = 32
@@ -1330,7 +1215,7 @@ Partial Class Form_Main
         'Net_PayTextBox
         '
         Me.Net_PayTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.IncomeBindingSource, "Net Pay", True))
-        Me.Net_PayTextBox.Location = New System.Drawing.Point(80, 357)
+        Me.Net_PayTextBox.Location = New System.Drawing.Point(80, 331)
         Me.Net_PayTextBox.Name = "Net_PayTextBox"
         Me.Net_PayTextBox.Size = New System.Drawing.Size(151, 20)
         Me.Net_PayTextBox.TabIndex = 34
@@ -1375,50 +1260,14 @@ Partial Class Form_Main
         '
         Me.AccountsDataGridView.AutoGenerateColumns = False
         Me.AccountsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.AccountsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32})
+        Me.AccountsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32})
         Me.AccountsDataGridView.DataSource = Me.AccountsBindingSource
         Me.AccountsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AccountsDataGridView.Location = New System.Drawing.Point(3, 16)
         Me.AccountsDataGridView.Name = "AccountsDataGridView"
+        Me.AccountsDataGridView.RowHeadersWidth = 20
         Me.AccountsDataGridView.Size = New System.Drawing.Size(615, 463)
         Me.AccountsDataGridView.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Id"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Id"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Account"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Account"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Balance"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Balance"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Account Type"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Account Type"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.DataPropertyName = "Total Credit Limit"
-        Me.DataGridViewTextBoxColumn31.HeaderText = "Total Credit Limit"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "MainAccount"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "MainAccount"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
         '
         'AccountsBindingSource
         '
@@ -1513,6 +1362,277 @@ Partial Class Form_Main
         '
         Me.TransactionsTableAdapter.ClearBeforeFill = True
         '
+        'Transactions_GroupedTableAdapter
+        '
+        Me.Transactions_GroupedTableAdapter.ClearBeforeFill = True
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 60
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Day of Payment"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Day of Payment"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 98
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Description"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.Width = 85
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Category"
+        Me.DataGridViewTextBoxColumn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Category"
+        Me.DataGridViewTextBoxColumn10.Items.AddRange(New Object() {"Car", "Debt Repayments", "Digital Subs", "Expenses", "Gifts", "Housing", "Luxury Expenses", "Non Digital Subs"})
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn10.Width = 74
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Amount"
+        DataGridViewCellStyle29.Format = "C2"
+        DataGridViewCellStyle29.NullValue = "0"
+        Me.DataGridViewTextBoxColumn11.DefaultCellStyle = DataGridViewCellStyle29
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Width = 68
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Type"
+        Me.DataGridViewTextBoxColumn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Type"
+        Me.DataGridViewTextBoxColumn12.Items.AddRange(New Object() {"Annual", "Singular", "Recurring"})
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn12.Width = 56
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Status"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Active"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn13.Width = 62
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 60
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Amount"
+        DataGridViewCellStyle30.Format = "C2"
+        DataGridViewCellStyle30.NullValue = "0"
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle30
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Width = 68
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Status"
+        Me.DataGridViewTextBoxColumn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn16.Items.AddRange(New Object() {"Paid", "Not Paid"})
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn16.Width = 62
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Comments"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Width = 81
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "MonthID"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "MonthID"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 73
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "Pay Date"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Pay Date"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.Width = 76
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Pay Period"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "Pay Period"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.Width = 83
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "Tax Code"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "Tax Code"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.Width = 78
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "Basic Salary"
+        DataGridViewCellStyle31.Format = "C2"
+        DataGridViewCellStyle31.NullValue = "0"
+        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle31
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Basic Salary"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.Width = 90
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Other Pay"
+        DataGridViewCellStyle32.Format = "C2"
+        DataGridViewCellStyle32.NullValue = "0"
+        Me.DataGridViewTextBoxColumn23.DefaultCellStyle = DataGridViewCellStyle32
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Other Pay"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        Me.DataGridViewTextBoxColumn23.Width = 79
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Pension"
+        DataGridViewCellStyle33.Format = "C2"
+        DataGridViewCellStyle33.NullValue = "0"
+        Me.DataGridViewTextBoxColumn24.DefaultCellStyle = DataGridViewCellStyle33
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Pension"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.Width = 70
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "Tax"
+        DataGridViewCellStyle34.Format = "C2"
+        DataGridViewCellStyle34.NullValue = "0"
+        Me.DataGridViewTextBoxColumn25.DefaultCellStyle = DataGridViewCellStyle34
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Tax"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.Width = 50
+        '
+        'DataGridViewTextBoxColumn26
+        '
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "NI"
+        DataGridViewCellStyle35.Format = "C2"
+        DataGridViewCellStyle35.NullValue = "0"
+        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle35
+        Me.DataGridViewTextBoxColumn26.HeaderText = "NI"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.Width = 43
+        '
+        'DataGridViewTextBoxColumn27
+        '
+        Me.DataGridViewTextBoxColumn27.DataPropertyName = "Predicted"
+        DataGridViewCellStyle36.Format = "C2"
+        DataGridViewCellStyle36.NullValue = "0"
+        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle36
+        Me.DataGridViewTextBoxColumn27.HeaderText = "Predicted"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        Me.DataGridViewTextBoxColumn27.Width = 77
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "Comments"
+        Me.DataGridViewTextBoxColumn28.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        Me.DataGridViewTextBoxColumn28.Width = 81
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "Source"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "Source"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.Width = 66
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        Me.DataGridViewTextBoxColumn30.DataPropertyName = "Net Pay"
+        DataGridViewCellStyle37.Format = "C2"
+        DataGridViewCellStyle37.NullValue = "0"
+        Me.DataGridViewTextBoxColumn30.DefaultCellStyle = DataGridViewCellStyle37
+        Me.DataGridViewTextBoxColumn30.HeaderText = "Net Pay"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        Me.DataGridViewTextBoxColumn30.Width = 70
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Account"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Account"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Balance"
+        DataGridViewCellStyle38.Format = "C2"
+        DataGridViewCellStyle38.NullValue = "0"
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle38
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Balance"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Account Type"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Account Type"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        Me.DataGridViewTextBoxColumn31.DataPropertyName = "Total Credit Limit"
+        DataGridViewCellStyle39.Format = "C2"
+        DataGridViewCellStyle39.NullValue = "0"
+        Me.DataGridViewTextBoxColumn31.DefaultCellStyle = DataGridViewCellStyle39
+        Me.DataGridViewTextBoxColumn31.HeaderText = "Total Credit Limit"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "MainAccount"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "MainAccount"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn32.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'CategoryDataGridViewTextBoxColumn
+        '
+        Me.CategoryDataGridViewTextBoxColumn.DataPropertyName = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.HeaderText = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.Name = "CategoryDataGridViewTextBoxColumn"
+        Me.CategoryDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CategoryDataGridViewTextBoxColumn.Width = 74
+        '
+        'TotalDataGridViewTextBoxColumn
+        '
+        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle27.Format = "C2"
+        DataGridViewCellStyle27.NullValue = "0"
+        Me.TotalDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle27
+        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
+        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
+        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TotalDataGridViewTextBoxColumn.Width = 56
+        '
         'Form_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1542,6 +1662,7 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TransactionsGroupedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TransactionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Transactions.ResumeLayout(False)
         CType(Me.TransactionsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1624,21 +1745,6 @@ Partial Class Form_Main
     Friend WithEvents SaveAllToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents IncomeDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
-    Friend WithEvents IdTextBox As TextBox
     Friend WithEvents MonthIDTextBox As TextBox
     Friend WithEvents Pay_DateTextBox As TextBox
     Friend WithEvents Pay_PeriodTextBox As TextBox
@@ -1653,12 +1759,6 @@ Partial Class Form_Main
     Friend WithEvents SourceTextBox As TextBox
     Friend WithEvents Net_PayTextBox As TextBox
     Friend WithEvents AccountsDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
     Friend WithEvents TextBox_MonthView_MainAccountLeft As TextBox
     Friend WithEvents TextBox_MonthView_MainAccountFunds As TextBox
     Friend WithEvents TextBox_MonthView_MonthIncome As TextBox
@@ -1667,11 +1767,17 @@ Partial Class Form_Main
     Friend WithEvents Button_MonthView_Refresh As Button
     Friend WithEvents TextBox_MonthView_MonthNotPaid As TextBox
     Friend WithEvents Button_MonthView_AddTransaction As Button
+    Friend WithEvents Button_Transactions_BulkAdd As Button
+    Friend WithEvents Button_Transactions_HighlightRecurring As Button
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents DataGridView_Transactions_Stats As DataGridView
+    Friend WithEvents TransactionsGroupedBindingSource As BindingSource
+    Friend WithEvents Transactions_GroupedTableAdapter As DatabaseDataSetTableAdapters.Transactions_GroupedTableAdapter
+    Friend WithEvents TextBox_Transactions_StatsTotal As TextBox
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents Button_Transactions_BulkAdd As Button
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
@@ -1679,7 +1785,24 @@ Partial Class Form_Main
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewCheckBoxColumn
-    Friend WithEvents Button_Transactions_HighlightRecurring As Button
-    Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents DataGridView_Transactions_Stats As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewCheckBoxColumn
+    Friend WithEvents CategoryDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

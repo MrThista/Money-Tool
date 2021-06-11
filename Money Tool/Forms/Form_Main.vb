@@ -10,6 +10,8 @@ Public Class Form_Main
     End Sub
 
     Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'DatabaseDataSet.Transactions_Grouped' table. You can move, or remove it, as needed.
+        Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
         Try
             'fill datatables from dataset
             Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
@@ -185,24 +187,29 @@ Public Class Form_Main
 
         'ask if the month is correct
         Dim ans As String = MsgBox("Would you like to add the highlighted transactions to " & ComboBox_MonthView_Month.Text & " " & ComboBox_MonthView_Year.Text, vbOKCancel, "Are you sure?")
-            Dim Name As String = ""
-            Dim Amount As Object = 0
-            Dim Comments As String = ""
-            Dim Month As String = ComboBox_MonthView_Month.Text
-            Dim Year As String = ComboBox_MonthView_Year.Text
-            Dim MonthID As String = Month & Year
+        Dim Name As String = ""
+        Dim Amount As Object = 0
+        Dim Comments As String = ""
+        Dim Month As String = ComboBox_MonthView_Month.Text
+        Dim Year As String = ComboBox_MonthView_Year.Text
+        Dim MonthID As String = Month & Year
 
-            If ans = vbOK Then
-                'add each selected row to this months transaction list
-                For Each row As DataGridViewRow In TransactionsDataGridView.Rows
+        If ans = vbOK Then
+            'add each selected row to this months transaction list
+            For Each row As DataGridViewRow In TransactionsDataGridView.Rows
                 If row.Selected = True Then
                     'Set Veriables
+
                     If String.IsNullOrWhiteSpace(row.Cells(0).FormattedValue) = False Then Name = row.Cells(0).Value
                     If String.IsNullOrWhiteSpace(row.Cells(4).FormattedValue) = False Then Amount = row.Cells(4).Value
                     If String.IsNullOrWhiteSpace(row.Cells(2).FormattedValue) = False Then Comments = row.Cells(2).Value
 
                     'add to transaction list table
                     Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
+
+                    Name = Nothing
+                    Amount = Nothing
+                    Comments = Nothing
 
                     'Refresh DGV
                     Button_MonthView_Filter.PerformClick()
@@ -213,7 +220,7 @@ Public Class Form_Main
                 End If
             Next
 
-            End If
+        End If
 
 
     End Sub
@@ -241,7 +248,57 @@ Public Class Form_Main
                 End If
             Next
         Catch ex As Exception
-            ' Throw
+            Throw
         End Try
+    End Sub
+
+    Private Sub TransactionsDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellContentClick
+
+    End Sub
+
+    Private Sub TransactionsDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellValueChanged
+        Try
+            'refresh stats dgv
+            Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
+            DataGridView_Transactions_Stats.DataSource = Nothing
+            DataGridView_Transactions_Stats.DataSource = TransactionsGroupedBindingSource
+            'DataGridView_Transactions_Stats.ClearSelection()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub DataGridView_Transactions_Stats_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView_Transactions_Stats.CellContentClick
+
+    End Sub
+
+    Private Sub DataGridView_Transactions_Stats_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView_Transactions_Stats.SelectionChanged
+        Try
+            DataGridView_Transactions_Stats.ClearSelection()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub TransactionsDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellLeave
+        'save changes
+        Me.Validate()
+        Me.TransactionsBindingSource.EndEdit()
+        Me.TransactionsTableAdapter.Update(Me.DatabaseDataSet)
+
+        'refresh stats dgv
+        Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
+        DataGridView_Transactions_Stats.DataSource = Nothing
+        DataGridView_Transactions_Stats.DataSource = TransactionsGroupedBindingSource
+        DataGridView_Transactions_Stats.ClearSelection()
+
+        'Update Total
+        Dim Total As Double = 0
+        For Each row In DataGridView_Transactions_Stats.Rows
+            Total = Total + row.cells(1).formattedvalue
+        Next
+
+        TextBox_Transactions_StatsTotal.Text = "£" & Total
+
     End Sub
 End Class
