@@ -90,8 +90,17 @@ Partial Class Form_Main
         Me.ButtonSave = New System.Windows.Forms.Button()
         Me.TabTransactions = New System.Windows.Forms.TabPage()
         Me.GroupBox_Transactions_Details = New System.Windows.Forms.GroupBox()
-        Me.StatusTextBox = New System.Windows.Forms.TextBox()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView_Transactions_Stats = New System.Windows.Forms.DataGridView()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DayOfPaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CategoryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TransactionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.StatusTextBox = New System.Windows.Forms.TextBox()
         Me.Button_Transactions_HighlightRecurring = New System.Windows.Forms.Button()
         Me.Button_Transactions_BulkAdd = New System.Windows.Forms.Button()
         Me.Button_Transactions_Save = New System.Windows.Forms.Button()
@@ -165,15 +174,6 @@ Partial Class Form_Main
         Me.IncomeTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.IncomeTableAdapter()
         Me.Transaction_ListTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.Transaction_ListTableAdapter()
         Me.TransactionsTableAdapter = New Money_Tool.DatabaseDataSetTableAdapters.TransactionsTableAdapter()
-        Me.DataGridView_Transactions_Stats = New System.Windows.Forms.DataGridView()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DayOfPaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CategoryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         AccountLabel = New System.Windows.Forms.Label()
         BalanceLabel = New System.Windows.Forms.Label()
         Account_TypeLabel = New System.Windows.Forms.Label()
@@ -210,6 +210,8 @@ Partial Class Form_Main
         CType(Me.DatabaseDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabTransactions.SuspendLayout()
         Me.GroupBox_Transactions_Details.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TransactionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Transactions.SuspendLayout()
         CType(Me.TransactionsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -223,8 +225,6 @@ Partial Class Form_Main
         CType(Me.AccountsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AccountsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'AccountLabel
@@ -867,6 +867,75 @@ Partial Class Form_Main
         Me.GroupBox_Transactions_Details.TabStop = False
         Me.GroupBox_Transactions_Details.Text = "Details"
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.DataGridView_Transactions_Stats)
+        Me.GroupBox7.Location = New System.Drawing.Point(9, 201)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(219, 190)
+        Me.GroupBox7.TabIndex = 24
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Stats"
+        '
+        'DataGridView_Transactions_Stats
+        '
+        Me.DataGridView_Transactions_Stats.AutoGenerateColumns = False
+        Me.DataGridView_Transactions_Stats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView_Transactions_Stats.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameDataGridViewTextBoxColumn, Me.DayOfPaymentDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.CategoryDataGridViewTextBoxColumn, Me.AmountDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn})
+        Me.DataGridView_Transactions_Stats.DataSource = Me.TransactionsBindingSource
+        Me.DataGridView_Transactions_Stats.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView_Transactions_Stats.Location = New System.Drawing.Point(3, 16)
+        Me.DataGridView_Transactions_Stats.Name = "DataGridView_Transactions_Stats"
+        Me.DataGridView_Transactions_Stats.Size = New System.Drawing.Size(213, 171)
+        Me.DataGridView_Transactions_Stats.TabIndex = 23
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        '
+        'DayOfPaymentDataGridViewTextBoxColumn
+        '
+        Me.DayOfPaymentDataGridViewTextBoxColumn.DataPropertyName = "Day of Payment"
+        Me.DayOfPaymentDataGridViewTextBoxColumn.HeaderText = "Day of Payment"
+        Me.DayOfPaymentDataGridViewTextBoxColumn.Name = "DayOfPaymentDataGridViewTextBoxColumn"
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        '
+        'CategoryDataGridViewTextBoxColumn
+        '
+        Me.CategoryDataGridViewTextBoxColumn.DataPropertyName = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.HeaderText = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.Name = "CategoryDataGridViewTextBoxColumn"
+        '
+        'AmountDataGridViewTextBoxColumn
+        '
+        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
+        '
+        'TypeDataGridViewTextBoxColumn
+        '
+        Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
+        Me.TypeDataGridViewTextBoxColumn.Name = "TypeDataGridViewTextBoxColumn"
+        '
+        'StatusDataGridViewTextBoxColumn
+        '
+        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
+        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
+        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
+        '
+        'TransactionsBindingSource
+        '
+        Me.TransactionsBindingSource.DataMember = "Transactions"
+        Me.TransactionsBindingSource.DataSource = Me.DatabaseDataSet
+        '
         'StatusTextBox
         '
         Me.StatusTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TransactionsBindingSource, "Status", True))
@@ -874,11 +943,6 @@ Partial Class Form_Main
         Me.StatusTextBox.Name = "StatusTextBox"
         Me.StatusTextBox.Size = New System.Drawing.Size(131, 20)
         Me.StatusTextBox.TabIndex = 22
-        '
-        'TransactionsBindingSource
-        '
-        Me.TransactionsBindingSource.DataMember = "Transactions"
-        Me.TransactionsBindingSource.DataSource = Me.DatabaseDataSet
         '
         'Button_Transactions_HighlightRecurring
         '
@@ -1501,70 +1565,6 @@ Partial Class Form_Main
         '
         Me.TransactionsTableAdapter.ClearBeforeFill = True
         '
-        'DataGridView_Transactions_Stats
-        '
-        Me.DataGridView_Transactions_Stats.AutoGenerateColumns = False
-        Me.DataGridView_Transactions_Stats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView_Transactions_Stats.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameDataGridViewTextBoxColumn, Me.DayOfPaymentDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.CategoryDataGridViewTextBoxColumn, Me.AmountDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn})
-        Me.DataGridView_Transactions_Stats.DataSource = Me.TransactionsBindingSource
-        Me.DataGridView_Transactions_Stats.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView_Transactions_Stats.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView_Transactions_Stats.Name = "DataGridView_Transactions_Stats"
-        Me.DataGridView_Transactions_Stats.Size = New System.Drawing.Size(213, 171)
-        Me.DataGridView_Transactions_Stats.TabIndex = 23
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.DataGridView_Transactions_Stats)
-        Me.GroupBox7.Location = New System.Drawing.Point(9, 201)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(219, 190)
-        Me.GroupBox7.TabIndex = 24
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Stats"
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        '
-        'DayOfPaymentDataGridViewTextBoxColumn
-        '
-        Me.DayOfPaymentDataGridViewTextBoxColumn.DataPropertyName = "Day of Payment"
-        Me.DayOfPaymentDataGridViewTextBoxColumn.HeaderText = "Day of Payment"
-        Me.DayOfPaymentDataGridViewTextBoxColumn.Name = "DayOfPaymentDataGridViewTextBoxColumn"
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        '
-        'CategoryDataGridViewTextBoxColumn
-        '
-        Me.CategoryDataGridViewTextBoxColumn.DataPropertyName = "Category"
-        Me.CategoryDataGridViewTextBoxColumn.HeaderText = "Category"
-        Me.CategoryDataGridViewTextBoxColumn.Name = "CategoryDataGridViewTextBoxColumn"
-        '
-        'AmountDataGridViewTextBoxColumn
-        '
-        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
-        '
-        'TypeDataGridViewTextBoxColumn
-        '
-        Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
-        Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
-        Me.TypeDataGridViewTextBoxColumn.Name = "TypeDataGridViewTextBoxColumn"
-        '
-        'StatusDataGridViewTextBoxColumn
-        '
-        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
-        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
-        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
-        '
         'Form_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1592,6 +1592,8 @@ Partial Class Form_Main
         Me.TabTransactions.ResumeLayout(False)
         Me.GroupBox_Transactions_Details.ResumeLayout(False)
         Me.GroupBox_Transactions_Details.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TransactionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Transactions.ResumeLayout(False)
         CType(Me.TransactionsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1607,8 +1609,6 @@ Partial Class Form_Main
         CType(Me.AccountsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DataGridView_Transactions_Stats, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox7.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

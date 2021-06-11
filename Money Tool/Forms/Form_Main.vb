@@ -179,10 +179,10 @@ Public Class Form_Main
     End Sub
 
     Private Sub Button_Transactions_BulkAdd_Click(sender As Object, e As EventArgs) Handles Button_Transactions_BulkAdd.Click
-        Try
 
-            'ask if the month is correct
-            Dim ans As String = MsgBox("Would you like to add the highlighted transactions to " & ComboBox_MonthView_Month.Text & " " & ComboBox_MonthView_Year.Text, vbOKCancel, "Are you sure?")
+
+        'ask if the month is correct
+        Dim ans As String = MsgBox("Would you like to add the highlighted transactions to " & ComboBox_MonthView_Month.Text & " " & ComboBox_MonthView_Year.Text, vbOKCancel, "Are you sure?")
             Dim Name As String = ""
             Dim Amount As Object = 0
             Dim Comments As String = ""
@@ -193,24 +193,27 @@ Public Class Form_Main
             If ans = vbOK Then
                 'add each selected row to this months transaction list
                 For Each row As DataGridViewRow In TransactionsDataGridView.Rows
-                    Name = row.Cells(0).Value
-                    Amount = row.Cells(4).Value
-                    Comments = row.Cells(2).Value.ToString
+                If row.Selected = True Then
+                    'Set Veriables
+                    If String.IsNullOrWhiteSpace(row.Cells(0).FormattedValue) = False Then Name = row.Cells(0).Value
+                    If String.IsNullOrWhiteSpace(row.Cells(4).FormattedValue) = False Then Amount = row.Cells(4).Value
+                    If String.IsNullOrWhiteSpace(row.Cells(2).FormattedValue) = False Then Comments = row.Cells(2).Value
 
-                    Debug.Print(Name)
-                    Debug.Print(Amount)
-                    Debug.Print(Comments)
+                    'add to transaction list table
+                    Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
 
-                    If row.Selected = True Then
-                        Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
-                    End If
-                Next
+                    'Refresh DGV
+                    Button_MonthView_Filter.PerformClick()
+
+                    'nav to MonthView
+                    TabControl1.SelectTab("TabMonthView")
+
+                End If
+            Next
 
             End If
 
-        Catch ex As Exception
-            Throw
-        End Try
+
     End Sub
 
     Private Sub Button_Transactions_Save_Click(sender As Object, e As EventArgs) Handles Button_Transactions_Save.Click
@@ -229,8 +232,11 @@ Public Class Form_Main
             'go through dgv and select all that have recurring status and active
 
             For Each row As DataGridViewRow In TransactionsDataGridView.Rows
-                Debug.Print(row.Cells(6).FormattedValue.ToString)
-                If row.Cells(5).Value = "Recurring" And row.Cells(6).FormattedValue.ToString = "True" Then row.Selected = True
+                If row.Cells(5).Value = "Recurring" And row.Cells(6).FormattedValue.ToString = "True" Then
+                    row.Selected = True
+                Else
+                    row.Selected = False
+                End If
             Next
         Catch ex As Exception
             ' Throw
