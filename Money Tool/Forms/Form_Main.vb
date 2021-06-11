@@ -26,7 +26,14 @@ Public Class Form_Main
             'Auto Filter
             Button_MonthView_Filter.PerformClick()
 
-            'status
+            'Transaction List
+            'Update Total
+            Dim Total As Double = 0
+            For Each row In DataGridView_Transactions_Stats.Rows
+                Total = Total + row.cells(1).formattedvalue
+            Next
+
+            TextBox_Transactions_StatsTotal.Text = "£" & Total
 
         Catch ex As Exception
 
@@ -47,7 +54,7 @@ Public Class Form_Main
         End Try
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button_Accounts_Save.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         Try
             Me.Validate()
             Me.AccountsBindingSource.EndEdit()
@@ -147,29 +154,33 @@ Public Class Form_Main
 
         On Error Resume Next
 
-        'month income
+        'month in
         TextBox_MonthView_MonthIncome.Text = "0"
-        TextBox_MonthView_MonthIncome.Text = IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID)
+        TextBox_MonthView_MonthIncome.Text = FormatCurrency(IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID), 2)
 
-        'month total
+        'month out
         TextBox_MonthView_MonthTotal.Text = "0"
-        TextBox_MonthView_MonthTotal.Text = Transaction_ListTableAdapter.Get_MonthTotal(MonthID)
+        TextBox_MonthView_MonthTotal.Text = FormatCurrency(Transaction_ListTableAdapter.Get_MonthTotal(MonthID), 2)
 
         'month paid
         TextBox_MonthView_MonthPaid.Text = "0"
-        TextBox_MonthView_MonthPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid")
+        TextBox_MonthView_MonthPaid.Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid"), 2)
 
         'month not paid
         TextBox_MonthView_MonthNotPaid.Text = "0"
-        TextBox_MonthView_MonthNotPaid.Text = Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid")
+        TextBox_MonthView_MonthNotPaid.Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid"), 2)
 
         'main account funds
         TextBox_MonthView_MainAccountFunds.Text = "0"
-        TextBox_MonthView_MainAccountFunds.Text = AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance
+        TextBox_MonthView_MainAccountFunds.Text = FormatCurrency(AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance, 2)
 
         'main account left
         TextBox_MonthView_MainAccountLeft.Text = "0"
-        TextBox_MonthView_MainAccountLeft.Text = TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text
+        TextBox_MonthView_MainAccountLeft.Text = FormatCurrency(TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text, 2)
+
+        'inout total
+        TextBox_MonthView_InOutTotal.Text = "0"
+        TextBox_MonthView_InOutTotal.Text = FormatCurrency(TextBox_MonthView_MonthIncome.Text - TextBox_MonthView_MonthTotal.Text, 2)
 
     End Sub
 
@@ -252,35 +263,7 @@ Public Class Form_Main
         End Try
     End Sub
 
-    Private Sub TransactionsDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellContentClick
-
-    End Sub
-
     Private Sub TransactionsDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellValueChanged
-        Try
-            'refresh stats dgv
-            Me.Transactions_GroupedTableAdapter.Fill(Me.DatabaseDataSet.Transactions_Grouped)
-            DataGridView_Transactions_Stats.DataSource = Nothing
-            DataGridView_Transactions_Stats.DataSource = TransactionsGroupedBindingSource
-            'DataGridView_Transactions_Stats.ClearSelection()
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub DataGridView_Transactions_Stats_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView_Transactions_Stats.CellContentClick
-
-    End Sub
-
-    Private Sub DataGridView_Transactions_Stats_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView_Transactions_Stats.SelectionChanged
-        Try
-            DataGridView_Transactions_Stats.ClearSelection()
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub TransactionsDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellLeave
         'save changes
         Me.Validate()
         Me.TransactionsBindingSource.EndEdit()
@@ -299,6 +282,37 @@ Public Class Form_Main
         Next
 
         TextBox_Transactions_StatsTotal.Text = "£" & Total
+    End Sub
+
+    Private Sub DataGridView_Transactions_Stats_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView_Transactions_Stats.CellContentClick
 
     End Sub
+
+    Private Sub DataGridView_Transactions_Stats_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView_Transactions_Stats.SelectionChanged
+        Try
+            DataGridView_Transactions_Stats.ClearSelection()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub TransactionsDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellLeave
+
+
+    End Sub
+
+    Private Sub AccountsDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles AccountsDataGridView.CellValueChanged
+        Me.Validate()
+        Me.AccountsBindingSource.EndEdit()
+        Me.AccountsTableAdapter.Update(Me.DatabaseDataSet)
+        'nav to MonthView
+        TabControl1.SelectTab("TabMonthView")
+        'refresh
+        Button_MonthView_Refresh.PerformClick()
+
+        TabControl1.SelectTab("TabAccounts")
+
+        Debug.Print("code is running")
+    End Sub
+
 End Class
