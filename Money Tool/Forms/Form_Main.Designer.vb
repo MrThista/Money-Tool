@@ -476,6 +476,7 @@ Partial Class Form_Main
         '
         'Label10
         '
+        Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Label10.AutoSize = True
         Label10.Location = New System.Drawing.Point(9, 390)
         Label10.Name = "Label10"
@@ -1156,6 +1157,7 @@ Partial Class Form_Main
         '
         'TextBox_Transactions_StatsTotal
         '
+        Me.TextBox_Transactions_StatsTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TextBox_Transactions_StatsTotal.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox_Transactions_StatsTotal.Location = New System.Drawing.Point(122, 390)
         Me.TextBox_Transactions_StatsTotal.Name = "TextBox_Transactions_StatsTotal"
