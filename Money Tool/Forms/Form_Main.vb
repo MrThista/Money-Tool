@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 
 Public Class Form_Main
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
@@ -9,9 +10,7 @@ Public Class Form_Main
         End Try
     End Sub
 
-    Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'DatabaseDataSet.Transactions_Grouped' table. You can move, or remove it, as needed.
-
+    Sub Form_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
 
             'nav to MonthView
@@ -23,6 +22,7 @@ Public Class Form_Main
             Me.TransactionsTableAdapter.Fill(Me.DatabaseDataSet.Transactions)
             Me.IncomeTableAdapter.Fill(Me.DatabaseDataSet.Income)
             Me.AccountsTableAdapter.Fill(Me.DatabaseDataSet.Accounts)
+            Me.CategoriesTableAdapter.Fill(Me.DatabaseDataSet1.Categories)
 
             'fill comboboxes with default current info
             ComboBox_MonthView_Month.SelectedIndex = Month(Now) - 1
@@ -39,11 +39,14 @@ Public Class Form_Main
             Next
 
             TextBox_Transactions_StatsTotal.Text = "£" & Total
+            DataGridView_TransactionList_Grouped.ClearSelection()
 
         Catch ex As Exception
 
         End Try
     End Sub
+
+
 
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         Try
@@ -76,23 +79,15 @@ Public Class Form_Main
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Try
-            Me.Validate()
-            Me.IncomeBindingSource.EndEdit()
-            Me.IncomeTableAdapter.Update(Me.DatabaseDataSet)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+
     End Sub
 
-    Private Sub Button_MonthView_Filter_Click(sender As Object, e As EventArgs) Handles Button_MonthView_Filter.Click
+    Sub Button_MonthView_Filter_Click(sender As Object, e As EventArgs) Handles Button_MonthView_Filter.Click
         Try
             Dim Month As String = ComboBox_MonthView_Month.Text
             Dim Year As String = ComboBox_MonthView_Year.Text
             Dim mCode As String = Month & Year
-
-
 
             Dim Filter As String = ""
 
@@ -100,16 +95,23 @@ Public Class Form_Main
             If ComboBox_MonthView_PaidStatus.Text = "Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Paid'"
             If ComboBox_MonthView_PaidStatus.Text = "Not Paid" Then Filter = "MonthID = '" & mCode & "'" & " AND Status = 'Not Paid'"
 
-
+            'transactionlist
             Me.Transaction_ListTableAdapter.Fill(Me.DatabaseDataSet.Transaction_List)
             Transaction_ListBindingSource.Filter = Filter
             Transaction_ListDataGridView.DataSource = Nothing
             Transaction_ListDataGridView.DataSource = Transaction_ListBindingSource
 
+            'categorytranslist
+            Me.TransactionList_GroupedTableAdapter.Fill(Me.DatabaseDataSet.TransactionList_Grouped, mCode)
+            DataGridView_TransactionList_Grouped.DataSource = Nothing
+            DataGridView_TransactionList_Grouped.DataSource = TransactionListGroupedBindingSource
+            DataGridView_TransactionList_Grouped.ClearSelection()
+
             'refresh button click
             Button_MonthView_Refresh.PerformClick()
 
         Catch ex As Exception
+            'Throw
             MsgBox("Error: " & ex.Message)
         End Try
     End Sub
@@ -206,6 +208,7 @@ Public Class Form_Main
         Dim Name As String = ""
         Dim Amount As Object = 0
         Dim Comments As String = ""
+        Dim Category As String = ""
         Dim Month As String = ComboBox_MonthView_Month.Text
         Dim Year As String = ComboBox_MonthView_Year.Text
         Dim MonthID As String = Month & Year
@@ -219,9 +222,10 @@ Public Class Form_Main
                     If String.IsNullOrWhiteSpace(row.Cells(0).FormattedValue) = False Then Name = row.Cells(0).Value
                     If String.IsNullOrWhiteSpace(row.Cells(4).FormattedValue) = False Then Amount = row.Cells(4).Value
                     If String.IsNullOrWhiteSpace(row.Cells(2).FormattedValue) = False Then Comments = row.Cells(2).Value
+                    If String.IsNullOrWhiteSpace(row.Cells(3).FormattedValue) = False Then Category = row.Cells(3).Value
 
                     'add to transaction list table
-                    Transaction_ListTableAdapter.Insert(Name, Amount, "Not Paid", Comments, MonthID)
+                    Transaction_ListTableAdapter.Insert(Name, Amount, Category, "Not Paid", Comments, MonthID)
 
                     Name = Nothing
                     Amount = Nothing
@@ -320,4 +324,99 @@ Public Class Form_Main
         Debug.Print("code is running")
     End Sub
 
+    Private Sub Form_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Form_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Transaction_ListDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Transaction_ListDataGridView.CellContentClick
+
+    End Sub
+
+    Private Sub Transaction_ListDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles Transaction_ListDataGridView.DataError
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub TransactionsDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles TransactionsDataGridView.CellContentClick
+
+    End Sub
+
+    Private Sub TransactionsDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles TransactionsDataGridView.DataError
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub EditCategoriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditCategoriesToolStripMenuItem.Click
+        Try
+            Form_Categories.Show()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub TransactionListGroupedBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles TransactionListGroupedBindingSource.CurrentChanged
+
+    End Sub
+
+    Private Sub Transaction_ListDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles Transaction_ListDataGridView.CellValueChanged
+        Try
+            Me.Validate()
+            Me.Transaction_ListBindingSource.EndEdit()
+            Me.Transaction_ListTableAdapter.Update(Me.DatabaseDataSet)
+
+            'refresh
+            Call Button_MonthView_Refresh.PerformClick()
+            Call Button_MonthView_Filter_Click(Nothing, Nothing)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub RefreshFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshFormToolStripMenuItem.Click
+        Try
+            Call Form_Main_Load(Nothing, Nothing)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub DataGridView_TransactionList_Grouped_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView_TransactionList_Grouped.SelectionChanged
+        Try
+            DataGridView_TransactionList_Grouped.ClearSelection()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub IncomeDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IncomeDataGridView.CellContentClick
+
+    End Sub
+
+    Private Sub IncomeDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles IncomeDataGridView.CellValueChanged
+        Try
+            Me.Validate()
+            Me.IncomeBindingSource.EndEdit()
+            Me.IncomeTableAdapter.Update(Me.DatabaseDataSet)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

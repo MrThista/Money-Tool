@@ -102,6 +102,12 @@
     <Compile Include="Forms\Form_Add.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Form_Categories.Designer.vb">
+      <DependentUpon>Form_Categories.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_Categories.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Form_Main.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\Form_Add.resx">
       <DependentUpon>Form_Add.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Categories.resx">
+      <DependentUpon>Form_Categories.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Main.resx">
       <DependentUpon>Form_Main.vb</DependentUpon>
