@@ -7,6 +7,9 @@ This tool helps in tracking specific monthly transactions. Making this for perso
 ## Current Version
 v1.01
 
+## New Splash Screen and Icon
+![Moon-icon (2)](https://user-images.githubusercontent.com/26851101/126877967-391f0647-5456-4b5f-9e2f-3f6ebb2f6eac.png)
+
 ## Inputs
 - Main Bank Account £
 - Income
