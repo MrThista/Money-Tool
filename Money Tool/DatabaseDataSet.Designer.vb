@@ -5343,15 +5343,15 @@ Namespace DatabaseDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Transactions] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name "& _ 
-                "= 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Day_of_Payme"& _ 
-                "nt = 1 AND [Day of Payment] IS NULL) OR ([Day of Payment] = @Original_Day_of_Pay"& _ 
-                "ment)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description"& _ 
-                "] = @Original_Description)) AND ((@IsNull_Category = 1 AND [Category] IS NULL) O"& _ 
-                "R ([Category] = @Original_Category)) AND ((@IsNull_Amount = 1 AND [Amount] IS NU"& _ 
-                "LL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Type = 1 AND [Type] IS NULL)"& _ 
-                " OR ([Type] = @Original_Type)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR"& _ 
-                " ([Status] = @Original_Status)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Transactions] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AN"& _ 
+                "D [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Day_of_Payment = 1"& _ 
+                " AND [Day of Payment] IS NULL) OR ([Day of Payment] = @Original_Day_of_Payment))"& _ 
+                " AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @O"& _ 
+                "riginal_Description)) AND ((@IsNull_Category = 1 AND [Category] IS NULL) OR ([Ca"& _ 
+                "tegory] = @Original_Category)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR"& _ 
+                " ([Amount] = @Original_Amount)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR (["& _ 
+                "Type] = @Original_Type)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Sta"& _ 
+                "tus] = @Original_Status)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -5370,11 +5370,11 @@ Namespace DatabaseDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Transactions] ([Name], [Day of Payment], [Description], [Categ"& _ 
-                "ory], [Amount], [Type], [Status]) VALUES (@Name, @Day_of_Payment, @Description, "& _ 
-                "@Category, @Amount, @Type, @Status);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Name, [Day of Payment], Descrip"& _ 
-                "tion, Category, Amount, Type, Status FROM Transactions WHERE (Id = SCOPE_IDENTIT"& _ 
-                "Y())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Transactions] ([Name], [Day of Payment], [Description], [Category], "& _ 
+                "[Amount], [Type], [Status]) VALUES (@Name, @Day_of_Payment, @Description, @Categ"& _ 
+                "ory, @Amount, @Type, @Status);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Name, [Day of Payment], Description, "& _ 
+                "Category, Amount, Type, Status FROM Transactions WHERE (Id = SCOPE_IDENTITY()) O"& _ 
+                "RDER BY Id"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Day_of_Payment", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Day of Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5385,18 +5385,18 @@ Namespace DatabaseDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Transactions] SET [Name] = @Name, [Day of Payment] = @Day_of_Paymen"& _ 
-                "t, [Description] = @Description, [Category] = @Category, [Amount] = @Amount, [Ty"& _ 
-                "pe] = @Type, [Status] = @Status WHERE (([Id] = @Original_Id) AND ((@IsNull_Name "& _ 
-                "= 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Day_of_Payme"& _ 
-                "nt = 1 AND [Day of Payment] IS NULL) OR ([Day of Payment] = @Original_Day_of_Pay"& _ 
-                "ment)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description"& _ 
-                "] = @Original_Description)) AND ((@IsNull_Category = 1 AND [Category] IS NULL) O"& _ 
-                "R ([Category] = @Original_Category)) AND ((@IsNull_Amount = 1 AND [Amount] IS NU"& _ 
-                "LL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Type = 1 AND [Type] IS NULL)"& _ 
-                " OR ([Type] = @Original_Type)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR"& _ 
-                " ([Status] = @Original_Status)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Name, [Day of Payment], Descriptio"& _ 
-                "n, Category, Amount, Type, Status FROM Transactions WHERE (Id = @Id)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Transactions] SET [Name] = @Name, [Day of Payment] = @Day_of_Payment, [De"& _ 
+                "scription] = @Description, [Category] = @Category, [Amount] = @Amount, [Type] = "& _ 
+                "@Type, [Status] = @Status WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AN"& _ 
+                "D [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Day_of_Payment = 1"& _ 
+                " AND [Day of Payment] IS NULL) OR ([Day of Payment] = @Original_Day_of_Payment))"& _ 
+                " AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @O"& _ 
+                "riginal_Description)) AND ((@IsNull_Category = 1 AND [Category] IS NULL) OR ([Ca"& _ 
+                "tegory] = @Original_Category)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR"& _ 
+                " ([Amount] = @Original_Amount)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR (["& _ 
+                "Type] = @Original_Type)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Sta"& _ 
+                "tus] = @Original_Status)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Name, [Day of Payment], Description, Cat"& _ 
+                "egory, Amount, Type, Status FROM Transactions WHERE (Id = @Id) ORDER BY Id"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Day_of_Payment", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Day of Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5436,8 +5436,8 @@ Namespace DatabaseDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Id, Name, [Day of Payment], Description, Category, Amount, Type, Status FR"& _ 
-                "OM dbo.Transactions"
+            Me._commandCollection(0).CommandText = "SELECT        Id, Name, [Day of Payment], Description, Category, Amount, Type, St"& _ 
+                "atus"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Transactions"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Id"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -5451,8 +5451,8 @@ Namespace DatabaseDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Id, Name, [Day of Payment], Description, Category, Amount, Type, Status FR"& _ 
-                "OM dbo.Transactions"
+            Me._commandCollection(3).CommandText = "SELECT Amount, Category, [Day of Payment], Description, Id, Name, Status, Type FR"& _ 
+                "OM Transactions"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -7124,14 +7124,14 @@ Namespace DatabaseDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Categories] ([Category]) VALUES (@Category);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Category FR"& _ 
-                "OM Categories WHERE (Id = SCOPE_IDENTITY())"
+                "OM Categories WHERE (Id = SCOPE_IDENTITY()) ORDER BY Category"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Category", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Category", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Categories] SET [Category] = @Category WHERE (([Id] = @Original_Id) AND ("& _ 
                 "(@IsNull_Category = 1 AND [Category] IS NULL) OR ([Category] = @Original_Categor"& _ 
-                "y)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Category FROM Categories WHERE (Id = @Id)"
+                "y)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Category FROM Categories WHERE (Id = @Id) ORDER BY Category"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Category", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Category", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7153,7 +7153,7 @@ Namespace DatabaseDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT * "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Categories"
+            Me._commandCollection(0).CommandText = "SELECT        Id, Category"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Categories"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Category"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

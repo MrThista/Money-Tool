@@ -49,17 +49,27 @@ Public Class Form_Main
 
 
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+        'Try
+        '    Me.Validate()
+        '    Me.Transaction_ListBindingSource.EndEdit()
+        '    Me.Transaction_ListTableAdapter.Update(Me.DatabaseDataSet)
+
+        '    'refresh
+        '    Call Button_MonthView_Refresh.PerformClick()
+
+        'Catch ex As Exception
+
+        'End Try
+
         Try
-            Me.Validate()
-            Me.Transaction_ListBindingSource.EndEdit()
-            Me.Transaction_ListTableAdapter.Update(Me.DatabaseDataSet)
-
-            'refresh
-            Call Button_MonthView_Refresh.PerformClick()
-
+            SaveAllToolStripMenuItem.PerformClick()
         Catch ex As Exception
 
         End Try
+
+
+
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
@@ -162,32 +172,53 @@ Public Class Form_Main
         On Error Resume Next
 
         'month in
-        TextBox_MonthView_MonthIncome.Text = "0"
-        TextBox_MonthView_MonthIncome.Text = FormatCurrency(IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID), 2)
+        With TextBox_MonthView_MonthIncome
+            .Text = "£0.00"
+            .Text = FormatCurrency(IncomeTableAdapter.Get_FiltersMonthID_NetPay(MonthID), 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'month out
-        TextBox_MonthView_MonthTotal.Text = "0"
-        TextBox_MonthView_MonthTotal.Text = FormatCurrency(Transaction_ListTableAdapter.Get_MonthTotal(MonthID), 2)
+        With TextBox_MonthView_MonthTotal
+            .Text = "£0.00"
+            .Text = FormatCurrency(Transaction_ListTableAdapter.Get_MonthTotal(MonthID), 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'month paid
-        TextBox_MonthView_MonthPaid.Text = "0"
-        TextBox_MonthView_MonthPaid.Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid"), 2)
+        With TextBox_MonthView_MonthPaid
+            .Text = "£0.00"
+            .Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Paid"), 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'month not paid
-        TextBox_MonthView_MonthNotPaid.Text = "0"
-        TextBox_MonthView_MonthNotPaid.Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid"), 2)
+        With TextBox_MonthView_MonthNotPaid
+            .Text = "£0.00"
+            .Text = FormatCurrency(Transaction_ListTableAdapter.Get_Paid_or_Unpaid(MonthID, "Not Paid"), 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'main account funds
-        TextBox_MonthView_MainAccountFunds.Text = "0"
-        TextBox_MonthView_MainAccountFunds.Text = FormatCurrency(AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance, 2)
+        With TextBox_MonthView_MainAccountFunds
+            .Text = "£0.00"
+            .Text = FormatCurrency(AccountsTableAdapter.IncomeQuery_Get_MainAccountBalance, 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'main account left
-        TextBox_MonthView_MainAccountLeft.Text = "0"
-        TextBox_MonthView_MainAccountLeft.Text = FormatCurrency(TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text, 2)
+        With TextBox_MonthView_MainAccountLeft
+            .Text = "£0.00"
+            .Text = FormatCurrency(TextBox_MonthView_MainAccountFunds.Text - TextBox_MonthView_MonthNotPaid.Text, 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
         'inout total
-        TextBox_MonthView_InOutTotal.Text = "0"
-        TextBox_MonthView_InOutTotal.Text = FormatCurrency(TextBox_MonthView_MonthIncome.Text - TextBox_MonthView_MonthTotal.Text, 2)
+        With TextBox_MonthView_InOutTotal
+            .Text = "£0.00"
+            .Text = FormatCurrency(TextBox_MonthView_MonthIncome.Text - TextBox_MonthView_MonthTotal.Text, 2)
+            If .Text = "" Then .Text = "£0.00"
+        End With
 
     End Sub
 
@@ -417,6 +448,14 @@ Public Class Form_Main
             Me.IncomeTableAdapter.Update(Me.DatabaseDataSet)
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub OpenCalculatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenCalculatorToolStripMenuItem.Click
+        Try
+            Process.Start("calc.exe")
+        Catch ex As Exception
+            MsgBox("Error when opening calculator program.")
         End Try
     End Sub
 End Class

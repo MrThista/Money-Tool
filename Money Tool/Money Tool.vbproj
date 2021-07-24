@@ -62,6 +62,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Pelfusion-Christmas-Shadow-2-Moon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -115,10 +118,17 @@
       <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Form_SplashScreen.Designer.vb">
+      <DependentUpon>Form_SplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_SplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -140,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Main.resx">
       <DependentUpon>Form_Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_SplashScreen.resx">
+      <DependentUpon>Form_SplashScreen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -191,6 +204,7 @@
       <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Pelfusion-Christmas-Shadow-2-Moon.ico" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
